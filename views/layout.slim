@@ -7,4 +7,15 @@ html lang="en"
     title Digimon
   body
   
+    nav
+      -if session[:inloggad]
+        a href="/" allt
+        a href="/" skapa
+        a href="/" mina
+        a href="/loggaut" logga ut
+        
+      -else
+        a href="/" start
+        a href="/register" rgistrera dig
+        a href="/login" logga in
     == yield

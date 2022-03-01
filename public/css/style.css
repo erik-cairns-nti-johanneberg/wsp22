@@ -1,3 +1,12 @@
 body{
     background-color: rgb(70, 70, 201);
 }
+nav{
+    background-color: rgb(156, 190, 62);
+    display: flex;
+    justify-content: center;
+}
+
+a {
+    margin: 10px;
+}
