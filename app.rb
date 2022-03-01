@@ -25,19 +25,20 @@ post('/users/new') do#registrerara användare.
     if password == password_confirm
       password_digest = BCrypt::Password.create(password)
       db = SQLite3::Database.new('db/wsp22_db.db')
-      begin 
+      begin
+
         db.execute("INSERT INTO user (username,pswdig,money) VALUES (?,?,?)",username,password_digest, 100)
+        session[:registration] = true #ny använader registreras
         redirect('/login')
       rescue => exeption
-        #säg att användarnamnet redan finns
+        session[:registration] = false #säg att användarnamnet redan finns
         redirect('/')
       end
 
 
-  
+      session[:pass] = true #korekt lösen
     else 
-  
-      "lösenorden matchade inte"
+      session[:pass] = false #säg att lösenordet var fel
       redirect('/register')
     end
 end
@@ -52,7 +53,8 @@ post('/users/login') do
     result = db.execute('SELECT * FROM user WHERE username =?', username).first #ta alla med önskat username
     
     if result == nil #undantagshantera ett användarnamn som inte finns
-      redirect('/errorusername')
+      #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
+      redirect('/login')
     end
 
     pswdig = result["pswdig"]
@@ -70,9 +72,4 @@ end
 get ('/loggaut') do # logga ut anvädare 
   session[:inloggad] = false
   redirect('/')
-end
-
-get ('/errorusername') do #visa fel användare
-  #visa de va fel
-  redirect('/login')
 end

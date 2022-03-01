@@ -3,3 +3,9 @@ form action="users/new" method="POST"
  input type="password" name="password" placeholder="Enter password" 
  input type="password" name="password_confirm" placeholder="Enter password again" 
  input type="submit" value="Registerra ny användrae"
+
+- if not session[:registration]
+    p invalid använadrnamn or password
+
+- if not session[:pass]
+    p invalid använadrnamn or password
