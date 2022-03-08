@@ -54,7 +54,7 @@ post('/users/login') do
     
     if result == nil #undantagshantera ett användarnamn som inte finns
       #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
-      redirect('/login')
+      redirect('/register')
     end
 
     pswdig = result["pswdig"]
@@ -65,11 +65,19 @@ post('/users/login') do
       session[:inloggad]=true
      redirect('/')
     else
-      redirect('/')
+      redirect('/login')
     end
 end
 
 get ('/loggaut') do # logga ut anvädare 
   session[:inloggad] = false
   redirect('/')
+end
+
+get('/allt') do #visa alla 
+  slim(:"digimon/index")
+end
+
+get('/skapa') do #visa alla 
+  slim(:"digimon/new")
 end
