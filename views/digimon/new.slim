@@ -1,2 +1,10 @@
 h2 skapa kort 
 
+form action="create" method="POST" enctype="multipart/form-data"
+ input type="text" name="diginame" placeholder="creatue_name"
+ input type="file" name="image"
+ select name="type"
+    - types.each do |type|
+        option value="#{type}" #{type.to_s}
+
+ input type="submit" value="Skapa"

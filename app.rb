@@ -78,6 +78,14 @@ get('/allt') do #visa alla
   slim(:"digimon/index")
 end
 
-get('/skapa') do #visa alla 
-  slim(:"digimon/new")
+get("/skapa") do
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  types = db.execute("SELECT type_name FROM types").map {|type| type[0]}
+  slim(:"digimon/new", locals: {types: types})
+end
+
+post('/create') do 
+  p params 
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.execute()
 end
