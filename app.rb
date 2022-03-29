@@ -84,8 +84,17 @@ get("/skapa") do
   slim(:"digimon/new", locals: {types: types})
 end
 
-post('/create') do 
-  p params 
+
+post('/create') do
+  digname= params[:diginame]
+  creator_id= session[:id]
+  creature_img=#
   db = SQLite3::Database.new('db\wsp22_db.db')
-  db.execute()
+  db.execute("INSERT INTO digimon (creator_id, name, img) VALUES (?,?,?)", creator_id, digname, creature_img)
+  redirect('/mina')
 end
+
+get("/mina") do
+
+
+end 
