@@ -43,7 +43,7 @@ post('/users/new') do#registrerara användare.
     end
 end
 
-post('/users/login') do
+post('/users/login') do 
     username=params[:username]
     password=params[:password]
   
@@ -69,32 +69,50 @@ post('/users/login') do
     end
 end
 
-get ('/loggaut') do # logga ut anvädare 
+get ('/loggaut') do # logga ut anvädare #gör alla till resful 
   session[:inloggad] = false
   redirect('/')
 end
 
-get('/allt') do #visa alla 
-  slim(:"digimon/index")
-end
 
-get("/skapa") do
+get("/skapa") do #gör alla till resful 
   db = SQLite3::Database.new('db\wsp22_db.db')
   types = db.execute("SELECT type_name FROM types").map {|type| type[0]}
   slim(:"digimon/new", locals: {types: types})
 end
 
 
-post('/create') do
+post('/create') do #gör alla till resful 
   digname= params[:diginame]
   creator_id= session[:id]
-  creature_img=#
+  creature_img=params[:image]
+  temp_path = creature_img[:tempfile]
+  creature_type=params[:type]
+
+  path = "/uploads/#{creature_img[:filename]}"
+
+  # Write file to disk
+  File.open("./public#{path}", 'wb') do |f|
+    f.write(temp_path.read)
+  end
+#lägg in type
   db = SQLite3::Database.new('db\wsp22_db.db')
-  db.execute("INSERT INTO digimon (creator_id, name, img) VALUES (?,?,?)", creator_id, digname, creature_img)
-  redirect('/mina')
+  db.execute("INSERT INTO digimon (creator_id, name, img, type) VALUES (?,?,?,?)", creator_id, digname, path, creature_type)
+  redirect('/allt')
 end
 
-get("/mina") do
+get('/egna') do #visa mina #gör alla till resful 
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.results_as_hash = true
+  result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:id]}")
+  p result
+  slim(:"digimon/index", locals:{dig:result})
+end
 
-
-end 
+get('/allt') do #visa alla #gör alla till resful 
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.results_as_hash = true
+  result = db.execute("SELECT * FROM digimon")
+  p result
+  slim(:"digimon/index", locals:{dig:result})
+end
