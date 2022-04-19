@@ -1,4 +1,4 @@
-h2 Showcards
+h1 show my cards
 
 h4 gör så korten från db visas en efter en
 
@@ -11,4 +11,10 @@ h4 gör så korten från db visas en efter en
         p "#{digiprop[2]}"
         p "#{digiprop[4]}"
 
+    form action="delete" method="POST"
+        input type="submit" value="delete"
+        input type="hidden" name="digimon_id" value="#{digiprop[0]}" 
+    
+    form action="update" method="POST"
+        input type="submit" value="update"
 end 

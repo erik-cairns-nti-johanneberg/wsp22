@@ -7,6 +7,22 @@ nav{
     justify-content: center;
 }
 
+img {
+    height: 100%;
+    width: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
 a {
     margin: 10px;
+}
+
+.container {
+    border: 2px solid aliceblue;
+    width: 25%;
+}
+
+.img_cont {
+    max-width: 100%;
 }

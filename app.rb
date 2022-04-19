@@ -26,11 +26,11 @@ post('/users/new') do#registrerara användare.
       password_digest = BCrypt::Password.create(password)
       db = SQLite3::Database.new('db/wsp22_db.db')
       begin
-
-        db.execute("INSERT INTO user (username,pswdig,money) VALUES (?,?,?)",username,password_digest, 100)
+        db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
         session[:registration] = true #ny använader registreras
         redirect('/login')
       rescue => exeption
+        p exeption
         session[:registration] = false #säg att användarnamnet redan finns
         redirect('/')
       end
@@ -50,7 +50,7 @@ post('/users/login') do
     db = SQLite3::Database.new('db\wsp22_db.db')
     db.results_as_hash = true
   
-    result = db.execute('SELECT * FROM user WHERE username =?', username).first #ta alla med önskat username
+    result = db.execute('SELECT * FROM user WHERE username=?', username).first #ta alla med önskat username
     
     if result == nil #undantagshantera ett användarnamn som inte finns
       #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
@@ -106,7 +106,7 @@ get('/egna') do #visa mina #gör alla till resful
   db.results_as_hash = true
   result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:id]}")
   p result
-  slim(:"digimon/index", locals:{dig:result})
+  slim(:"digimon/mine", locals:{dig:result})
 end
 
 get('/allt') do #visa alla #gör alla till resful 
@@ -115,4 +115,11 @@ get('/allt') do #visa alla #gör alla till resful
   result = db.execute("SELECT * FROM digimon")
   p result
   slim(:"digimon/index", locals:{dig:result})
+end
+
+post('/delete') do
+  digi_id=params[:digimon_id].to_i
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.execute("DELETE FROM digimon WHERE id=?", digi_id)
+  redirect('/allt')
 end
