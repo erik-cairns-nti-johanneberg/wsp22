@@ -4,10 +4,10 @@ h4 gör så korten från db visas en efter en
 
 - dig.each do |digiprop|
     div.container
-        p "#{digiprop[0]}"
+        p "id:","#{digiprop[0]}"
         div.img_cont
             img src="#{digiprop[3]}" alt="bild"
-        p "#{digiprop[1]}"
+        p "skapare id","#{digiprop[1]}"
         p "#{digiprop[2]}"
         p "#{digiprop[4]}"
 
@@ -15,6 +15,8 @@ h4 gör så korten från db visas en efter en
         input type="submit" value="delete"
         input type="hidden" name="digimon_id" value="#{digiprop[0]}" 
     
-    form action="update" method="POST"
+    form action="update" method="GET"
         input type="submit" value="update"
+        input type="hidden" name="digimon_id" value="#{digiprop[0]}" 
+    
 end 

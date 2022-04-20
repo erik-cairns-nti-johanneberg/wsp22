@@ -105,7 +105,7 @@ get('/egna') do #visa mina #gör alla till resful
   db = SQLite3::Database.new('db\wsp22_db.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:id]}")
-  p result
+  puts result
   slim(:"digimon/mine", locals:{dig:result})
 end
 
@@ -113,7 +113,6 @@ get('/allt') do #visa alla #gör alla till resful
   db = SQLite3::Database.new('db\wsp22_db.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM digimon")
-  p result
   slim(:"digimon/index", locals:{dig:result})
 end
 
@@ -121,5 +120,25 @@ post('/delete') do
   digi_id=params[:digimon_id].to_i
   db = SQLite3::Database.new('db\wsp22_db.db')
   db.execute("DELETE FROM digimon WHERE id=?", digi_id)
+  redirect('/allt')
+end
+
+
+get('/update') do
+  digi_id=params[:digimon_id].to_i
+  p "id:t e ", digi_id
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  types = db.execute("SELECT type_name FROM types").map {|type| type[0]}
+  p types
+  slim(:"digimon/edit", locals: {types: types, id: digi_id})
+  
+end
+
+post('/edit') do
+  p  params[:diginame_new]
+  p params[:type_new]
+  p params[:id]
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.execute("UPDATE digimon SET name=?,type=? WHERE id=?", params[:diginame_new],params[:type_new],params[:id])
   redirect('/allt')
 end
