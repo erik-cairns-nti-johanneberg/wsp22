@@ -3,6 +3,8 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 
+require_relative 'funk'
+
 enable :sessions
 
 get('/') do #visa startsida
@@ -44,29 +46,17 @@ post('/users/new') do#registrerara användare.
 end
 
 post('/users/login') do 
-    username=params[:username]
-    password=params[:password]
-  
-    db = SQLite3::Database.new('db\wsp22_db.db')
-    db.results_as_hash = true
-  
-    result = db.execute('SELECT * FROM user WHERE username=?', username).first #ta alla med önskat username
-    
-    if result == nil #undantagshantera ett användarnamn som inte finns
-      #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
-      redirect('/register')
-    end
+  username=params[:username]
+  password=params[:password]
 
-    pswdig = result["pswdig"]
-    id=result["id"]
-  
-    if BCrypt::Password.new(pswdig) == password
-      session[:id] = id
-      session[:inloggad]=true
-     redirect('/')
-    else
-      redirect('/login')
-    end
+  db = SQLite3::Database.new('db\wsp22_db.db')
+  db.results_as_hash = true
+
+  if allfromUsername(username).empty? #undantagshantera ett användarnamn som inte finns
+    #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
+    redirect('/error')
+  end
+  login(username, password)
 end
 
 get ('/loggaut') do # logga ut anvädare #gör alla till resful 
@@ -83,7 +73,7 @@ end
 
 post('/cards') do #gör alla till resful 
   digname= params[:diginame]
-  creator_id= session[:id]
+  creator_id= session[:user_id]
   creature_img=params[:image]
   temp_path = creature_img[:tempfile]
   creature_type=params[:type]
@@ -103,7 +93,7 @@ end
 get('/egna') do #visa mina #gör alla till resful 
   db = SQLite3::Database.new('db\wsp22_db.db')
   db.results_as_hash = true
-  result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:id]}")
+  result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:user_id]}")
   puts result
   slim(:"digimon/mine", locals:{dig:result})
 end
@@ -114,8 +104,6 @@ get('/cards/') do #visa alla #gör alla till resful
   result = db.execute("SELECT * FROM digimon")
   slim(:"digimon/index", locals:{dig:result})
 end
-
-#både delete och uppdate e fel för rest
 
 
 get("/cards/:id/edit") do
