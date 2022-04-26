@@ -32,8 +32,7 @@ end
 get('/egna') do #visa bara användarens 
   db = db_conect('db\wsp22_db.db')
   db.results_as_hash = true
-  result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:user_id]}")
-  puts result
+  result = result('db\wsp22_db.db', session[:user_id])
   slim(:"digimon/mine", locals:{dig:result})
 end
 
@@ -116,12 +115,12 @@ post("/cards/:id/update") do #uppdatera korten
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
   id = params[:id]
-  update('db\wsp22_db.db')
+  update('db\wsp22_db.db', id)
   redirect('/cards')
 end
 
 post("/cards/:id/delete") do #ta bort kort
   id=params[:id]
-  delete('db\wsp22_db.db')
+  delete('db\wsp22_db.db', id)
   redirect('/cards')
 end
