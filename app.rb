@@ -24,31 +24,33 @@ get ('/loggaut') do # logga ut anvädare
   redirect('/')
 end
 
-get("/cads/new") do #visa formulär för att skapa kort 
-  db = SQLite3::Database.new('db\wsp22_db.db')
-  types = db.execute("SELECT type_name FROM types").map {|type| type[0]}
+get("/cards/new") do #visa formulär för att skapa kort 
+  types = types('db\wsp22_db.db')
   slim(:"digimon/new", locals: {types: types})
 end
 
 get('/egna') do #visa bara användarens 
-  db = SQLite3::Database.new('db\wsp22_db.db')
+  db = db_conect('db\wsp22_db.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM digimon WHERE creator_id == #{session[:user_id]}")
   puts result
   slim(:"digimon/mine", locals:{dig:result})
 end
 
-get('/cards/') do #visa alla  
-  db = SQLite3::Database.new('db\wsp22_db.db')
+get('/cards') do #visa alla  
+  db = db_conect('db\wsp22_db.db')
   db.results_as_hash = true
   result = db.execute("SELECT * FROM digimon")
+
+  p result
+
   slim(:"digimon/index", locals:{dig:result})
 end
 
 get("/cards/:id/edit") do #visa edit formuläret
   id=params[:id]
-  db = SQLite3::Database.new('db\wsp22_db.db')
-  types = db.execute("SELECT type_name FROM types").map {|type| type[0]}
+  db = db_conect('db\wsp22_db.db')
+  types = types('db\wsp22_db.db')
   slim(:"digimon/edit", locals: {types: types,})
 end
 
@@ -82,7 +84,7 @@ post('/users/login') do #logga in användare
   username=params[:username]
   password=params[:password]
 
-  db = SQLite3::Database.new('db\wsp22_db.db')
+  db = db_conect('db\wsp22_db.db')
   db.results_as_hash = true
 
   if allfromUsername(username).empty? #undantagshantera ett användarnamn som inte finns
@@ -99,30 +101,27 @@ post('/cards') do #gör kort
   temp_path = creature_img[:tempfile]
   creature_type=params[:type]
 
-  path = "/uploads/#{creature_img[:filename]}"
+  img_path = "/uploads/#{creature_img[:filename]}"
 
   # Write file to disk
-  File.open("./public#{path}", 'wb') do |f|
+  File.open("./public#{img_path}", 'wb') do |f|
     f.write(temp_path.read)
   end
 
-  db = SQLite3::Database.new('db\wsp22_db.db')
-  db.execute("INSERT INTO digimon (creator_id, name, img, type) VALUES (?,?,?,?)", creator_id, digname, path, creature_type)
-  redirect('/cards/')
+  create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
+  redirect('/cards')
 end
 
 post("/cards/:id/update") do #uppdatera korten
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
   id = params[:id]
-  db = SQLite3::Database.new('db\wsp22_db.db')
-  db.execute("UPDATE digimon SET name=?,type=? WHERE id=?", params[:diginame_new],params[:type_new], id)
-  redirect('/cards/')
+  update('db\wsp22_db.db')
+  redirect('/cards')
 end
 
 post("/cards/:id/delete") do #ta bort kort
   id=params[:id]
-  db = SQLite3::Database.new('db\wsp22_db.db')
-  db.execute("DELETE FROM digimon WHERE id=?", id)
-  redirect('/cards/')
+  delete('db\wsp22_db.db')
+  redirect('/cards')
 end

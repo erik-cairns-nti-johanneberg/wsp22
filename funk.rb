@@ -24,3 +24,24 @@ def login(username, password)
         redirect('/login')
     end
 end
+
+def types(path)
+    db = db_conect(path)
+    return db.execute("SELECT type_name FROM types").map {|type| type[0]}
+end
+
+def update(path)
+    db = db_conect(path)
+    return db.execute("UPDATE digimon SET name=?,type=? WHERE id=?", params[:diginame_new],params[:type_new], id)
+end
+
+def delete(path)
+    db = db_conect(path)
+    return db.execute("DELETE FROM digimon WHERE id=?", id)
+end
+
+def create(path, creator_id, digname, img_path, creature_type)
+    db = db_conect(path)
+
+    return db.execute("INSERT INTO digimon (creator_id, name, img, type) VALUES (?,?,?,?)", creator_id, digname, img_path, creature_type)
+end
