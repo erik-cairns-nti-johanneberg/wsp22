@@ -57,7 +57,13 @@ post('/users/new') do#registrerara användare.
     username = params[:username]
     password = params[:password]
     password_confirm = params[:password_confirm]
-  
+    
+    if isEmpty(username) || isEmpty(password)
+      redirect('/register')
+    end
+
+    
+
     if password == password_confirm
       password_digest = BCrypt::Password.create(password)
       db = SQLite3::Database.new('db/wsp22_db.db')
@@ -83,7 +89,18 @@ post('/users/login') do #logga in användare
   username=params[:username]
   password=params[:password]
 
+  if isEmpty(username) || isEmpty(password)
+    redirect('/login')
+  end
+
   db = db_conect('db\wsp22_db.db')
+  db.results_as_hash=true
+  res=db.execute("SELECT * FROM user WHERE username=?",username).first
+  if res["authority"]==2
+    session[:authority]=true
+  end
+  
+  
   db.results_as_hash = true
 
   if allfromUsername(username).empty? #undantagshantera ett användarnamn som inte finns
@@ -94,21 +111,25 @@ post('/users/login') do #logga in användare
 end
 
 post('/cards') do #gör kort 
+  
   digname= params[:diginame]
   creator_id= session[:user_id]
   creature_img=params[:image]
   temp_path = creature_img[:tempfile]
   creature_type=params[:type]
+  if creator_id
+    img_path = "/uploads/#{creature_img[:filename]}"
 
-  img_path = "/uploads/#{creature_img[:filename]}"
+    # Write file to disk
+    File.open("./public#{img_path}", 'wb') do |f|
+      f.write(temp_path.read)
+    end
 
-  # Write file to disk
-  File.open("./public#{img_path}", 'wb') do |f|
-    f.write(temp_path.read)
+    create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
+    redirect('/cards')
+  else
+    redirect('/error')
   end
-
-  create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
-  redirect('/cards')
 end
 
 post("/cards/:id/update") do #uppdatera korten
@@ -123,4 +144,8 @@ post("/cards/:id/delete") do #ta bort kort
   id=params[:id]
   delete('db\wsp22_db.db', id)
   redirect('/cards')
+end
+
+get('/error') do
+  redirect('/')
 end

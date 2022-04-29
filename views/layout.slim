@@ -6,13 +6,16 @@ html lang="en"
     link rel="stylesheet" href="/css/style.css"
     title Digimon
   body
-  
     nav
-      -if session[:inloggad]
-        a href="/cards" allt
-        a href="/cards/new" skapa
-        a href="/egna" mina
-        a href="/loggaut" logga ut
+      -if session[:authority]
+        a href="/delete_users" killer button
+        a href="/loggaut" logga ut 
+        
+      -elsif session[:inloggad]
+          a href="/cards" allt
+          a href="/cards/new" skapa
+          a href="/egna" mina
+          a href="/loggaut" logga ut        
         
       -else
         a href="/" start

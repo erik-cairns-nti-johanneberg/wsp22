@@ -50,3 +50,13 @@ def result(path, user_id)
     db.results_as_hash = true
     return db.execute("SELECT * FROM digimon WHERE creator_id = ?", user_id)
 end
+
+def isEmpty(text)
+    if text == nil
+        return true
+    elsif text == "" || text.scan(/ /).empty? == false 
+        return true
+    else
+        return false
+    end    
+end
