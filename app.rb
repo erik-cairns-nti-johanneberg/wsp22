@@ -86,12 +86,23 @@ post('/users/new') do#registrerara användare.
       redirect('/register')
   end
 end
+
 post('/users/login') do #logga in användare
+  session[:empty] = false
+  session[:wrong_psw] = false
+  session[:no_username] = false
+
   username=params[:username]
   password=params[:password]
 
-  if isEmpty(username) || isEmpty(password)
-    redirect('/error')
+  if isEmpty(username) || isEmpty(password)#tomt användarnamn
+    session[:empty] = true
+    redirect('/login')
+  end
+
+  if allfromUsername(username).empty? # användarnamn som inte finns
+    session[:no_username] = true
+    redirect('/login')
   end
 
   db = db_conect('db\wsp22_db.db')
@@ -104,10 +115,7 @@ post('/users/login') do #logga in användare
   
   db.results_as_hash = true
 
-  if allfromUsername(username).empty? #undantagshantera ett användarnamn som inte finns
-    #säg finns ingen sådan användare()()()()()()()()()()()()()(/(/(/(/((/(/(/(/(/(/(/(/(/(/(/(/(/(/(/(/)))))))))))))))))))))
-    redirect('/error')
-  end
+  
   login(username, password)
 end
 

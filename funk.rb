@@ -20,7 +20,7 @@ def login(username, password)
         session[:inloggad]=true
         redirect('/')
     else
-        #say wrong password
+        session[:wrong_psw]=true
         redirect('/login')
     end
 end
