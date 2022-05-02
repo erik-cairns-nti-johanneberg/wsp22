@@ -21,6 +21,7 @@ end
 
 get ('/loggaut') do # logga ut anvädare 
   session[:inloggad] = false
+  session[:authority] = false
   redirect('/')
 end
 
@@ -143,6 +144,24 @@ end
 post("/cards/:id/delete") do #ta bort kort
   id=params[:id]
   delete('db\wsp22_db.db', id)
+  redirect('/cards')
+end
+
+get ('/delete_users') do
+  db=db_conect('db\wsp22_db.db')
+  db.results_as_hash = true
+  result = db.execute("SELECT * FROM user")
+  slim(:"delete_user", locals:{use:result})
+
+end
+
+post("/user/:id/delete") do #ta bort kort
+  #delet users 
+  id=params[:id]
+  db=db_conect('db\wsp22_db.db')
+  db.execute("DELETE FROM user WHERE id=?", id)
+  #delete all post from deleted_users
+  db.execute("DELETE FROM digimon WHERE creator_id=?", id)
   redirect('/cards')
 end
 

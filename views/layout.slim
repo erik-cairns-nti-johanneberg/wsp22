@@ -7,7 +7,7 @@ html lang="en"
     title Digimon
   body
     nav
-      -if session[:authority]
+      -if session[:authority] && session[:inloggad]
         a href="/delete_users" killer button
         a href="/loggaut" logga ut 
         

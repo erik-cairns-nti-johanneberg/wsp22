@@ -26,3 +26,7 @@ a {
 .img_cont {
     max-width: 100%;
 }
+
+.users_table {
+    border: 3px solid black;
+}
