@@ -20,8 +20,11 @@ get ('/login') do #visa loginsidan
 end
 
 get ('/loggaut') do # logga ut anvädare 
+  session[:empty] = false
   session[:inloggad] = false
   session[:authority] = false
+  session[:wrong_psw] = false
+  session[:no_unique_username] = false
   redirect('/')
 end
 
@@ -55,43 +58,40 @@ get("/cards/:id/edit") do #visa edit formuläret
 end
 
 post('/users/new') do#registrerara användare.
-    username = params[:username]
-    password = params[:password]
-    password_confirm = params[:password_confirm]
-    
-    if isEmpty(username) || isEmpty(password)
+  session[:empty] = false
+  session[:inloggad] = false
+  session[:wrong_psw] = false
+  session[:no_unique_username] = false
+
+  username = params[:username]
+  password = params[:password]
+  password_confirm = params[:password_confirm]
+  
+  if isEmpty(username) || isEmpty(password)
+    session[:empty]=true
+    redirect('/register')
+  end
+  if password == password_confirm
+    password_digest = BCrypt::Password.create(password)
+    db = SQLite3::Database.new('db/wsp22_db.db')
+    begin
+      db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
+      redirect('/login')
+    rescue SQLite3::ConstraintException 
+      session[:no_unique_username]=true
       redirect('/register')
     end
-
-    
-
-    if password == password_confirm
-      password_digest = BCrypt::Password.create(password)
-      db = SQLite3::Database.new('db/wsp22_db.db')
-      begin
-        db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
-        session[:registration] = true #ny använader registreras
-        redirect('/login')
-      rescue => exeption
-        p exeption
-        session[:registration] = false #säg att användarnamnet redan finns
-        redirect('/')
-      end
-
-
-      session[:pass] = true #korekt lösen
-    else 
-      session[:pass] = false #säg att lösenordet var fel
+  else 
+    session[:wrong_psw] = true #säg att lösenordet var fel
       redirect('/register')
-    end
+  end
 end
-
 post('/users/login') do #logga in användare
   username=params[:username]
   password=params[:password]
 
   if isEmpty(username) || isEmpty(password)
-    redirect('/login')
+    redirect('/error')
   end
 
   db = db_conect('db\wsp22_db.db')

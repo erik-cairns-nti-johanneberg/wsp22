@@ -3,3 +3,15 @@ form action="users/new" method="POST"
  input type="password" name="password" placeholder="Enter password" 
  input type="password" name="password_confirm" placeholder="Enter password again" 
  input type="submit" value="Registerra ny användrae"
+
+    -if session[:empty]
+        p de vart en tom ruta där 
+    
+    -if session[:no_unique_username]
+        p den användaren fanns redan 
+      
+    -if session[:wrong_psw]
+        p de vart fel lösens confirmation där
+
+    -if session[:no_registration]
+        p nu vart nåt skumt me lösen va?
