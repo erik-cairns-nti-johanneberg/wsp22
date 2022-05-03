@@ -99,7 +99,13 @@ def wrong_type(type)
     return false
 end
 
-def wrong_creator_id(creator_id)
+def not_creator_id(digi_id,creator_id)
     #check
-    return false
+    p "digi_id #{digi_id}"
+    db=db_conect('db\wsp22_db.db')
+    dig_id=db.execute("SELECT * FROM digimon WHERE id =?",digi_id).first
+    p dig_id
+    p creator_id
+    return if dig_id["creator_id"] != creator_id
+   
 end

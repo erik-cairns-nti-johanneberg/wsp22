@@ -128,7 +128,6 @@ post('/cards') do #gör kort
   session[:badname] = false
   session[:false_img] = false
   session[:wrong_type] = false
-  session[:wrong_creator_id] = false
 
   digname= params[:diginame]
   creator_id= session[:user_id]
@@ -161,13 +160,6 @@ post('/cards') do #gör kort
     redirect('/cards/new')
   end
 
-  if wrong_creator_id(creator_id)
-    session[:wrong_creator_id] = true
-    redirect('/cards/new')
-  end
-
-
- 
   temp_path = creature_img[:tempfile]
 
   img_path = "/uploads/#{creature_img[:filename]}"
@@ -181,9 +173,34 @@ post('/cards') do #gör kort
 end
 
 post("/cards/:id/update") do #uppdatera korten
+  session[:empty] = false
+  session[:badname] = false
+  session[:wrong_type] = false
+  session[:wrong_creator_id] = false
+
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
   id = params[:id]
+
+  #felaktigt namn
+  if badname(diginame_new)
+    session[:badname] = true
+    redirect("/cards/:id/edit")
+
+  end
+
+  #felaktig typ
+  if wrong_type(type_new)
+    session[:wrong_type] = true
+    redirect("/cards/:id/edit")
+  end
+
+  #tomt namn
+  if isEmpty(diginame_new)
+    session[:empty] = true
+    redirect("/cards/:id/edit")
+  end
+
   update('db\wsp22_db.db', id)
   redirect('/cards')
 end
