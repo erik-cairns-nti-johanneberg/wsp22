@@ -1,3 +1,7 @@
+#inga sessions eller redirekcts
+MAX_IMG_SIZE = 300  # MB
+MAX_NAME_CHAR = 20  #nr.char
+
 def db_conect(path)
     return SQLite3::Database.new(path)
 end
@@ -59,4 +63,43 @@ def isEmpty(text)
     else
         return false
     end    
+end
+
+def get_file_size(file)
+    return (File.size(file).to_f / 1024000).round(2) 
+end
+
+def false_img(img)
+    #check
+    if img == nil
+        return true
+
+    elsif img["type"] != "image/jpeg" && img["type"] != "image/png"
+        return true
+
+    elsif get_file_size(img["tempfile"]) > MAX_IMG_SIZE
+        return true
+
+    else
+        return false
+    end
+end
+
+
+def str_has_bad_char(str)
+    return (str =~ /[^a-zA-Z0-9]/) != nil || (str =~ /[0-9]/) != nil
+end
+
+def badname(name)
+    return name.length > MAX_NAME_CHAR || str_has_bad_char(name)
+end
+
+def wrong_type(type)
+    #check
+    return false
+end
+
+def wrong_creator_id(creator_id)
+    #check
+    return false
 end

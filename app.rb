@@ -7,6 +7,9 @@ require_relative 'funk'
 
 enable :sessions
 
+#secure routes
+
+
 get('/') do #visa startsida
   slim(:start)
 end
@@ -71,13 +74,14 @@ post('/users/new') do#registrerara användare.
     session[:empty]=true
     redirect('/register')
   end
+
   if password == password_confirm
     password_digest = BCrypt::Password.create(password)
     db = SQLite3::Database.new('db/wsp22_db.db')
     begin
       db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
       redirect('/login')
-    rescue SQLite3::ConstraintException 
+    rescue SQLite3::ConstraintException #fixa så de e mer specifikt ###Db.execute("SELECT username FROM users WHERE username=?", username)
       session[:no_unique_username]=true
       redirect('/register')
     end
@@ -120,25 +124,60 @@ post('/users/login') do #logga in användare
 end
 
 post('/cards') do #gör kort 
-  
+  session[:empty] = false
+  session[:badname] = false
+  session[:false_img] = false
+  session[:wrong_type] = false
+  session[:wrong_creator_id] = false
+
   digname= params[:diginame]
   creator_id= session[:user_id]
   creature_img=params[:image]
-  temp_path = creature_img[:tempfile]
   creature_type=params[:type]
-  if creator_id
-    img_path = "/uploads/#{creature_img[:filename]}"
 
-    # Write file to disk
-    File.open("./public#{img_path}", 'wb') do |f|
-      f.write(temp_path.read)
-    end
 
-    create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
-    redirect('/cards')
-  else
-    redirect('/error')
+  #felaktig img
+  if false_img(creature_img)
+    session[:false_img] = true
+    redirect('/cards/new')
   end
+
+  #felaktigt namn
+  if badname(digname)
+    session[:badname] = true
+    redirect('/cards/new')
+
+  end
+
+  #felaktig typ
+  if wrong_type(creature_type)
+    session[:wrong_type] = true
+    redirect('/cards/new')
+  end
+
+  #tomt namn
+  if isEmpty(digname)
+    session[:empty] = true
+    redirect('/cards/new')
+  end
+
+  if wrong_creator_id(creator_id)
+    session[:wrong_creator_id] = true
+    redirect('/cards/new')
+  end
+
+
+ 
+  temp_path = creature_img[:tempfile]
+
+  img_path = "/uploads/#{creature_img[:filename]}"
+  # Write file to disk
+  File.open("./public#{img_path}", 'wb') do |f|
+    f.write(temp_path.read)
+  end
+
+  create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
+  redirect('/cards')
 end
 
 post("/cards/:id/update") do #uppdatera korten

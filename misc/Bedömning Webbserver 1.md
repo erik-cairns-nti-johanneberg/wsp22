@@ -1,7 +1,7 @@
 
 
 # Bedömningsshandledning Webbserverprogrammering 1
-
+sök ctrl+f på #(måste fixas)
 ## Matris
 
 | Aspekt         | E                                                            | C                                                            | A                                                            |
@@ -22,7 +22,7 @@ Gemensamt för samtliga aspekter på C-nivå är större grad av självständigh
 
 ### A-nivå
 
-Gemensamt för samtliga aspekter på A-nivå är en större grad av självständighet än på E-nivå.
+Gemensamt för samtliga aspekter på A-nivå är en större grad av självständighet än på E-nivå.##(check)
 
 ## Dokumentation
 | E                                                            | C                                                            | A                                                            |
@@ -39,7 +39,7 @@ Eleven har utförlig domänbeskrivning som beskriver olika användares behörigh
 
 ### A-nivå
 
-Eleven har domänbeskrivning likt C-nivå, och använder obehinrdat de flesta begrepp. Applikationens routes är även dokumenterade enligt tex Yardoc.
+Eleven har domänbeskrivning likt C-nivå, och använder obehinrdat de flesta begrepp. Applikationens routes är även dokumenterade enligt tex Yardoc.#(måste fixas)
 
 ## Arkitektur
 
@@ -65,9 +65,9 @@ Eleven följer någotsånär REST och har en tydlig namngivning av vyer/routes.
 
 ### A-nivå
 
-Eleven följer MVC (där det är möjligt att controllern bara består av en app.rb - men det är även möjligt att dela upp den efter resurs.)
+Eleven följer MVC (där det är möjligt att controllern bara består av en app.rb - men det är även möjligt att dela upp den efter resurs.)#(måste fixas)
 
-Eleven följer REST fullt ut.
+Eleven följer REST fullt ut.#(måste fixas)
 
 ## Funktionalitet
 
@@ -87,11 +87,11 @@ Appliktionen har ett inloggninssystem, och det finns skillnad på vad man kan g�
 
 ### A-nivå
 
-Applikationen erbjuder ett CRUD-gränssnit för flera resurser, där flera har associationer/relationer till varandra. Vid uppdatering och borttagning av relaterade resurser förändras även kopplade resurser där så är nödvändigt (t.ex genom `ON DELETE CASCADE`-liknande funktinalitet).
+Applikationen erbjuder ett CRUD-gränssnit för flera resurser, där flera har associationer/relationer till varandra. Vid uppdatering och borttagning av relaterade resurser förändras även kopplade resurser där så är nödvändigt (t.ex genom `ON DELETE CASCADE`-liknande funktinalitet).#(måste fixas)
 
 Inloggningssystemet skiljer på vad oinloggade och inloggade användare kan göra, och implementerar ett enkelt behörighetssystem (t.ex guest-user, standard-user, admin).
 
-Eleven använder automatiserade tester (capybara) för att testa någon funktionalitet i applikationen.
+Eleven använder automatiserade tester (capybara) för att testa någon funktionalitet i applikationen.#(måste fixas)
 
 ## Datalagring
 
@@ -109,7 +109,7 @@ Eleven har en databas med flera tabeller, varav minst två har relationer med va
 
 ### A-nivå
 
-Eleven har en databas med flera tabeller, varav minst två beskriver ett många-till-många-förhållande. Eftersom detta är omöjligt har eleven omvandlat det till två en-till-många via en relationstabell.
+Eleven har en databas med flera tabeller, varav minst två beskriver ett många-till-många-förhållande. Eftersom detta är omöjligt har eleven omvandlat det till två en-till-många via en relationstabell.#(måste fixas)
 
 ## Säkerhet
 
@@ -131,5 +131,5 @@ Eleven validerar och escapar användarinput
 
 ### A-nivå
 
-Eleven har ett inloggninssystem med hashade lösenord i databasen. Eleven säkrar upp routes och implementerar t.ex logging kring inloggningsförsök och cool-down eller liknande vid hackningsförsök. Eventuellt implementerar eleven "strong params" mha black/whitelist.
-Eleven kan även använda sig av Sinatras CSRF-funktionalitet
+Eleven har ett inloggninssystem med hashade lösenord i databasen. Eleven säkrar upp routes och implementerar t.ex logging kring inloggningsförsök och cool-down eller liknande vid hackningsförsök. Eventuellt implementerar eleven "strong params" mha black/whitelist.#(måste fixas)
+Eleven kan även använda sig av Sinatras CSRF-funktionalitet #(måste fixas)

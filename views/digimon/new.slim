@@ -8,3 +8,20 @@ form action="/cards" method="POST" enctype="multipart/form-data"
         option value="#{type}" #{type.to_s}
 
  input type="submit" value="Skapa"
+
+    -if session[:empty]
+        p de vart en tom namn ruta där 
+    
+    -if session[:false_img]
+        p den bilden va inte rätt 
+      
+    -if session[:badname]
+        p de vart fel på namnet där
+
+    -if session[:wrong_type]
+        p nu vart nåt skumt me typen va? 
+
+    -if session[:wrong_creator_id]
+        p nu vart nåt skumt me dig va? 
+
+  
