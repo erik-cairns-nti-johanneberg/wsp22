@@ -24,4 +24,9 @@ form action="/cards" method="POST" enctype="multipart/form-data"
     -if session[:wrong_creator_id]
         p nu vart nåt skumt me dig va? 
 
+    -if session[:no__unique_digname]
+        p kortets naman måste vara unikt va? 
+
+        
+
   

@@ -109,3 +109,11 @@ def not_creator_id(digi_id,creator_id)
     return if dig_id["creator_id"] != creator_id
    
 end
+
+def no_unique_name(diginame)
+    db=db_conect('db\wsp22_db.db')
+    dig_name=db.execute("SELECT name FROM digimon WHERE name =?",diginame).first
+    p dig_name
+  
+    return dig_name != nil
+end

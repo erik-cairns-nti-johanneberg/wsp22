@@ -128,6 +128,7 @@ post('/cards') do #gör kort
   session[:badname] = false
   session[:false_img] = false
   session[:wrong_type] = false
+  session[:no__unique_digname] = false
 
   digname= params[:diginame]
   creator_id= session[:user_id]
@@ -140,26 +141,29 @@ post('/cards') do #gör kort
     session[:false_img] = true
     redirect('/cards/new')
   end
+ #tomt namn
+  if isEmpty(digname)
+    session[:empty] = true
+    redirect('/cards/new')
+  end
 
   #felaktigt namn
   if badname(digname)
     session[:badname] = true
     redirect('/cards/new')
-
   end
 
+  if no_unique_name(digname)
+    session[:no__unique_digname] = true
+    redirect('/cards/new')
+  end
   #felaktig typ
   if wrong_type(creature_type)
     session[:wrong_type] = true
     redirect('/cards/new')
   end
 
-  #tomt namn
-  if isEmpty(digname)
-    session[:empty] = true
-    redirect('/cards/new')
-  end
-
+ 
   temp_path = creature_img[:tempfile]
 
   img_path = "/uploads/#{creature_img[:filename]}"
