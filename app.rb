@@ -153,10 +153,12 @@ post('/cards') do #gör kort
     redirect('/cards/new')
   end
 
+  #unikt namn på kort
   if no_unique_name(digname)
-    session[:no__unique_digname] = true
+    session[:no_unique_digname] = true
     redirect('/cards/new')
   end
+
   #felaktig typ
   if wrong_type(creature_type)
     session[:wrong_type] = true
@@ -181,6 +183,7 @@ post("/cards/:id/update") do #uppdatera korten
   session[:badname] = false
   session[:wrong_type] = false
   session[:wrong_creator_id] = false
+  session[:no_unique_digname] = false
 
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
@@ -202,6 +205,12 @@ post("/cards/:id/update") do #uppdatera korten
   #tomt namn
   if isEmpty(diginame_new)
     session[:empty] = true
+    redirect("/cards/:id/edit")
+  end
+
+  #unikt namn
+  if no_unique_name(diginame_new)
+    session[:no_unique_digname] = true
     redirect("/cards/:id/edit")
   end
 
