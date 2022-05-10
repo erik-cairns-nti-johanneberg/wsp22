@@ -10,7 +10,7 @@ h4 gör så korten från db visas en efter en
         p "skapare id","#{digiprop[1]}"
         p "#{digiprop[2]}"
         p "#{digiprop[4]}"
-
+        p "din rating är #{avg_rate(digiprop["id"])}
     form action="cards/#{digiprop[0]}/delete" method="POST"
         input type="submit" value="delete"
     

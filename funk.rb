@@ -125,3 +125,9 @@ end
 def check_rate(rating)
     return rating <= 10 && rating.class == Integer
 end
+
+def avg_rate(digi_id)
+    db = db_conect('db\wsp22_db.db')
+    res = db.execute("SELECT AVG(rating) FROM digimon_and_rating WHERE digimon_id =?", digi_id)
+    return res
+end
