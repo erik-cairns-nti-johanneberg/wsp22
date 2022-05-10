@@ -91,7 +91,6 @@ Applikationen erbjuder ett CRUD-gränssnit för flera resurser, där flera har a
 
 Inloggningssystemet skiljer på vad oinloggade och inloggade användare kan göra, och implementerar ett enkelt behörighetssystem (t.ex guest-user, standard-user, admin).
 
-Eleven använder automatiserade tester (capybara) för att testa någon funktionalitet i applikationen.#(måste fixas)
 
 ## Datalagring
 

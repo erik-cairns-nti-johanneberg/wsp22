@@ -32,6 +32,7 @@ get ('/loggaut') do # logga ut anvädare
 end
 
 get("/cards/new") do #visa formulär för att skapa kort 
+ 
   types = types('db\wsp22_db.db')
   slim(:"digimon/new", locals: {types: types})
 end
