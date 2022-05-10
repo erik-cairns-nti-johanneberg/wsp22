@@ -116,3 +116,12 @@ def no_unique_name(diginame)
     p dig_name
     return dig_name != nil
 end
+
+def rate(digi_id, rating, user_id)
+    db = db_conect('db\wsp22_db.db')
+    db.execute("INSERT INTO digimon_and_rating (user_id,digimon_id,rating) VALUES (?,?,?)", user_id,digi_id,rating).first
+end
+
+def check_rate(rating)
+    return rating <= 10 && rating.class == Integer
+end

@@ -246,3 +246,25 @@ end
 get('/error') do
   redirect('/')
 end
+
+get("/cards/:id/rate") do
+  slim(:"digimon/rate")
+end
+
+post("/cards/:id/rate") do
+  digi_id = params[:id].to_i
+  rating = params[:rating].to_i
+  user_id = session[:user_id]
+
+  p rating
+  p rating.class
+
+  if check_rate(rating)
+    session[:bad_rating]=false
+    rate(digi_id, rating, user_id)
+    redirect('/cards')
+  else
+    session[:bad_rating]=true
+    redirect('/cards/:id/rate')
+  end
+end

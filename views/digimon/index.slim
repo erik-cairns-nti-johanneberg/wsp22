@@ -12,4 +12,7 @@ h4 gör så korten från db visas en efter en
         p "#{digiprop["creator_id"]}"
         p "#{digiprop["type"]}"
 
-end 
+        form action="cards/#{digiprop["id"]}/rate" method="get"
+            input type="submit" value="rating"
+
+end     
