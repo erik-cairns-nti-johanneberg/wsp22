@@ -121,7 +121,7 @@ def no_unique_name(diginame)
 end
 
 def rate(digi_id, rating, user_id)
-    db = db_conect()
+    db = db_conect(false)
     db.execute("INSERT INTO digimon_and_rating (user_id,digimon_id,rating) VALUES (?,?,?)", user_id,digi_id,rating).first
 end
 
@@ -130,7 +130,7 @@ def check_rate(rating)
 end
 
 def avg_rate(digi_id)
-    db = db_conect()
+    db = db_conect(false)
     res = db.execute("SELECT AVG(rating) FROM digimon_and_rating WHERE digimon_id =?", digi_id)
     return res
 end

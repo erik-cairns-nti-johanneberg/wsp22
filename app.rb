@@ -37,8 +37,7 @@ get("/cards/new") do #visa formulär för att skapa kort
 end
 
 get('/egna') do #visa bara användarens 
-  db = db_conect(true)
-  result = result('db\wsp22_db.db', session[:user_id])
+  result = result(session[:user_id])
   slim(:"digimon/mine", locals:{dig:result})
 end
 
