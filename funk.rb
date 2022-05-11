@@ -19,21 +19,10 @@ def make_user(username,password)
     db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
 end
 
-def login(username, password)
-    user = allfromUsername(username, true).first
-    
-    pwdigest = user["pswdig"]
-    id = user["id"]
-
-    if BCrypt::Password.new(pwdigest) == password
-        session[:user_id] = id
-        session[:inloggad]=true
-        redirect('/')
-    else
-        session[:wrong_psw]=true
-        redirect('/login')
-    end
+def bad_psw(password, user)
+    return BCrypt::Password.new(user["pswdig"]) != password
 end
+
 
 def wrong_psw(psw, psw_comf)
     return psw != psw_comf

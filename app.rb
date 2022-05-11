@@ -98,16 +98,21 @@ post('/users/login') do #logga in användare
     redirect('/login')
   end
 
-  res = allfromUsername(username, true).first
+  user = allfromUsername(username, true).first
 
-  p res
-  p res["id"]
-
-  if res["authority"].to_i==2
+  if user["authority"].to_i==2
     session[:authority]=true
   end
 
-  login(username, password)
+  if bad_psw(password, user)
+    session[:wrong_psw] = false
+    redirect('/login')
+  end
+
+  session[:user_id] = user["id"]
+  session[:inloggad]=true
+
+  redirect('/')
 end
 
 post('/cards') do #gör kort 
