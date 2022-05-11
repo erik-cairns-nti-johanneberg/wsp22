@@ -66,20 +66,18 @@ post('/users/new') do#registrerara användare.
     redirect('/register')
   end
 
-  if password == password_confirm
-    password_digest = BCrypt::Password.create(password)
-    db = SQLite3::Database.new('db/wsp22_db.db')
-    begin
-      db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
-      redirect('/login')
-    rescue SQLite3::ConstraintException #fixa så de e mer specifikt ###Db.execute("SELECT username FROM users WHERE username=?", username)
-      session[:no_unique_username]=true
-      redirect('/register')
-    end
-  else 
+  if wrong_psw(password, password_confirm)
     session[:wrong_psw] = true #säg att lösenordet var fel
-      redirect('/register')
+    redirect('/register')
   end
+
+  if no_unique_user(username)
+    session[:no_unique_username]=true
+    redirect('/register')
+  end
+
+  make_user(username, password)
+  redirect('/login')
 end
 
 post('/users/login') do #logga in användare

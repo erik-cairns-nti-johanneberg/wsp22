@@ -13,6 +13,12 @@ def allfromUsername(username, bool)
     return db.execute('SELECT * FROM user WHERE username=?', username)
 end
 
+def make_user(username,password)
+    db=db_conect(false)
+    password_digest = BCrypt::Password.create(password)
+    db.execute("INSERT INTO user (username,pswdig,authority) VALUES (?,?,?)",username,password_digest,1)
+end
+
 def login(username, password)
     user = allfromUsername(username, true).first
     
@@ -29,8 +35,8 @@ def login(username, password)
     end
 end
 
-def wrong_psw
-
+def wrong_psw(psw, psw_comf)
+    return psw != psw_comf
 end
 
 def all_dig(bool)
@@ -122,6 +128,13 @@ def no_unique_name(diginame)
     dig_name=db.execute("SELECT name FROM digimon WHERE name =?",diginame).first
     return dig_name != nil
 end
+
+def no_unique_user(username)
+    db=db_conect(false)
+    user_name=db.execute("SELECT username FROM user WHERE username =?",username).first
+    return user_name != nil
+end
+
 
 def rate(digi_id, rating, user_id)
     db = db_conect(false)
