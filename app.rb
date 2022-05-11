@@ -32,7 +32,7 @@ get ('/loggaut') do # logga ut anvädare
 end
 
 get("/cards/new") do #visa formulär för att skapa kort 
-  types = types()
+  types = types(false)
   slim(:"digimon/new", locals: {types: types})
 end
 
@@ -42,18 +42,12 @@ get('/egna') do #visa bara användarens
 end
 
 get('/cards') do #visa alla  
-  db = db_conect(true)
-  result = db.execute("SELECT * FROM digimon")
-
-  p result
-
+  result = all_dig(true)
   slim(:"digimon/index", locals:{dig:result})
 end
 
 get("/cards/:id/edit") do #visa edit formuläret
-  id=params[:id]
-  db = db_conect(false)
-  types = types('db\wsp22_db.db')
+  types = types(false)
   slim(:"digimon/edit", locals: {types: types,})
 end
 
@@ -209,7 +203,7 @@ post("/cards/:id/update") do #uppdatera korten
     redirect("/cards/:id/edit")
   end
 
-  update('db\wsp22_db.db', id)
+  update(id)
   redirect('/cards')
 end
 
