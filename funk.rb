@@ -35,8 +35,8 @@ end
 
 
 
-def types(path)
-    db = db_conect()
+def types()
+    db = db_conect(false)
     return db.execute("SELECT type_name FROM types").map {|type| type[0]}
 end
 
@@ -51,7 +51,7 @@ def delete(id)
 end
 
 def create(creator_id, digname, img_path, creature_type)
-    db = db_conect()
+    db = db_conect(false)
     return db.execute("INSERT INTO digimon (creator_id, name, img, type) VALUES (?,?,?,?)", creator_id, digname, img_path, creature_type)
 end
 
@@ -115,7 +115,7 @@ def not_creator_id(digi_id,creator_id)
 end
 
 def no_unique_name(diginame)
-    db=db_conect()
+    db=db_conect(false)
     dig_name=db.execute("SELECT name FROM digimon WHERE name =?",diginame).first
     return dig_name != nil
 end

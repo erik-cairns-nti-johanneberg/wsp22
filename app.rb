@@ -32,7 +32,7 @@ get ('/loggaut') do # logga ut anvädare
 end
 
 get("/cards/new") do #visa formulär för att skapa kort 
-  types = types('db\wsp22_db.db')
+  types = types()
   slim(:"digimon/new", locals: {types: types})
 end
 
@@ -170,7 +170,7 @@ post('/cards') do #gör kort
     f.write(temp_path.read)
   end
 
-  create('db\wsp22_db.db', session[:user_id], params[:diginame], img_path, params[:type])
+  create(session[:user_id], params[:diginame], img_path, params[:type])
   redirect('/cards')
 end
 
