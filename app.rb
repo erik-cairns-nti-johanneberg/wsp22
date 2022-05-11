@@ -32,21 +32,18 @@ get ('/loggaut') do # logga ut anvädare
 end
 
 get("/cards/new") do #visa formulär för att skapa kort 
- 
   types = types('db\wsp22_db.db')
   slim(:"digimon/new", locals: {types: types})
 end
 
 get('/egna') do #visa bara användarens 
-  db = db_conect('db\wsp22_db.db')
-  db.results_as_hash = true
+  db = db_conect(true)
   result = result('db\wsp22_db.db', session[:user_id])
   slim(:"digimon/mine", locals:{dig:result})
 end
 
 get('/cards') do #visa alla  
-  db = db_conect('db\wsp22_db.db')
-  db.results_as_hash = true
+  db = db_conect(true)
   result = db.execute("SELECT * FROM digimon")
 
   p result
@@ -56,7 +53,7 @@ end
 
 get("/cards/:id/edit") do #visa edit formuläret
   id=params[:id]
-  db = db_conect('db\wsp22_db.db')
+  db = db_conect(false)
   types = types('db\wsp22_db.db')
   slim(:"digimon/edit", locals: {types: types,})
 end
@@ -105,22 +102,20 @@ post('/users/login') do #logga in användare
     redirect('/login')
   end
 
-  if allfromUsername(username).empty? # användarnamn som inte finns
+  if allfromUsername(username, false).empty? # användarnamn som inte finns
     session[:no_username] = true
     redirect('/login')
   end
 
-  db = db_conect('db\wsp22_db.db')
-  db.results_as_hash=true
-  res=db.execute("SELECT * FROM user WHERE username=?",username).first
-  if res["authority"]==2
+  res = allfromUsername(username, true).first
+
+  p res
+  p res["id"]
+
+  if res["authority"].to_i==2
     session[:authority]=true
   end
-  
-  
-  db.results_as_hash = true
 
-  
   login(username, password)
 end
 
@@ -226,8 +221,7 @@ post("/cards/:id/delete") do #ta bort kort
 end
 
 get ('/delete_users') do
-  db=db_conect('db\wsp22_db.db')
-  db.results_as_hash = true
+  db=db_conect(true)
   result = db.execute("SELECT * FROM user")
   slim(:"delete_user", locals:{use:result})
 
@@ -236,7 +230,7 @@ end
 post("/user/:id/delete") do #ta bort kort
   #delet users 
   id=params[:id]
-  db=db_conect('db\wsp22_db.db')
+  db=db_conect(false)
   db.execute("DELETE FROM user WHERE id=?", id)
   #delete all post from deleted_users
   db.execute("DELETE FROM digimon WHERE creator_id=?", id)
