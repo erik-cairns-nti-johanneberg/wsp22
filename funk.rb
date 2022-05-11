@@ -38,13 +38,13 @@ def types(bool)
     return db.execute("SELECT type_name FROM types").map {|type| type[0]}
 end
 
-def update( id)
-    db = db_conect(false)
+def update(id,bool)
+    db = db_conect(bool)
     return db.execute("UPDATE digimon SET name=?,type=? WHERE id=?", params[:diginame_new],params[:type_new], id)
 end
 
-def delete(id)
-    db = db_conect(false)
+def delete(id,bool)
+    db = db_conect(bool)
     return db.execute("DELETE FROM digimon WHERE id=?", id)
 end
 

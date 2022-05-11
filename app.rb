@@ -110,8 +110,8 @@ post('/users/login') do #logga in användare
   end
 
   session[:user_id] = user["id"]
+  
   session[:inloggad]=true
-
   redirect('/')
 end
 
@@ -157,7 +157,7 @@ post('/cards') do #gör kort
     redirect('/cards/new')
   end
 
- 
+ #########################################################flytta till mvc?
   temp_path = creature_img[:tempfile]
 
   img_path = "/uploads/#{creature_img[:filename]}"
@@ -185,7 +185,6 @@ post("/cards/:id/update") do #uppdatera korten
   if badname(diginame_new)
     session[:badname] = true
     redirect("/cards/:id/edit")
-
   end
 
   #felaktig typ
@@ -206,13 +205,13 @@ post("/cards/:id/update") do #uppdatera korten
     redirect("/cards/:id/edit")
   end
 
-  update(id)
+  update(id,false)
   redirect('/cards')
 end
 
 post("/cards/:id/delete") do #ta bort kort
   id=params[:id]
-  delete('db\wsp22_db.db', id)
+  delete(id,false)
   redirect('/cards')
 end
 
