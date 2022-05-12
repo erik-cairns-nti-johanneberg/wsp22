@@ -27,6 +27,9 @@ form action="/cards" method="POST" enctype="multipart/form-data"
     -if session[:no_unique_digname]
         p kortets naman måste vara unikt va? 
 
+    -if session[:stress]
+        p de vart fett snabbt där
+
         
 
   

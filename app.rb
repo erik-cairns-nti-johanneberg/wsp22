@@ -8,7 +8,7 @@ require_relative 'funk'
 enable :sessions
 
 #secure routes
-
+  
 
 get('/') do #visa startsida
   slim(:start)
@@ -24,9 +24,15 @@ end
 
 get ('/loggaut') do # logga ut anvädare 
   session[:empty] = false
+  session[:stress] = false
+  session[:badname] = false
   session[:inloggad] = false
   session[:authority] = false
+  session[:false_img] = false
   session[:wrong_psw] = false
+  session[:wrong_type] = false
+  session[:wrong_creator_id] = false
+  session[:no_unique_digname] = false
   session[:no_unique_username] = false
   redirect('/')
 end
@@ -53,14 +59,32 @@ end
 
 post('/users/new') do#registrerara användare.
   session[:empty] = false
+  session[:stress] = false
+  session[:badname] = false
   session[:inloggad] = false
+  session[:false_img] = false
   session[:wrong_psw] = false
+  session[:wrong_type] = false
   session[:no_unique_username] = false
+  session[:no_unique_digname] = false
 
   username = params[:username]
   password = params[:password]
   password_confirm = params[:password_confirm]
   
+  #cooldown till #spammar register
+  if session[:timeLogged] == nil #first time
+    session[:timeLogged] = 0
+  end
+
+  spam =  spamtime(session[:timeLogged])
+  session[:timeLogged] = Time.now.to_i #for next possible itteration
+
+  if spam #spammar registre
+    session[:stress] = true
+    redirect('/register')
+  end
+
   if isEmpty(username) || isEmpty(password)
     session[:empty]=true
     redirect('/register')
@@ -83,10 +107,14 @@ end
 post('/users/login') do #logga in användare
 
   session[:empty] = false
-  session[:wrong_psw] = false
-  session[:no_username] = false
   session[:stress] = false
-
+  session[:badname] = false
+  session[:false_img] = false
+  session[:wrong_psw] = false
+  session[:wrong_type] = false
+  session[:wrong_creator_id] = false
+  session[:no_unique_digname] = false
+  session[:no_unique_username] = false
 
   username=params[:username]
   password=params[:password]
@@ -132,16 +160,31 @@ end
 
 post('/cards') do #gör kort 
   session[:empty] = false
+  session[:stress] = false
   session[:badname] = false
   session[:false_img] = false
+  session[:wrong_psw] = false
   session[:wrong_type] = false
-  session[:no__unique_digname] = false
+  session[:wrong_creator_id] = false
+  session[:no_unique_digname] = false
+  session[:no_unique_username] = false
 
   digname= params[:diginame]
   creator_id= session[:user_id]
   creature_img=params[:image]
   creature_type=params[:type]
 
+  #cooldown till #spammar kort
+  if session[:timeLogged] == nil #first time
+    session[:timeLogged] = 0
+  end
+  spam =  spamtime(session[:timeLogged])
+  session[:timeLogged] = Time.now.to_i #for next possible itteration
+
+  if spam #spammar kort
+    session[:stress] = true
+    redirect('/cards/new')
+  end
 
   #felaktig img
   if false_img(creature_img)
@@ -185,15 +228,31 @@ end
 
 post("/cards/:id/update") do #uppdatera korten
   session[:empty] = false
+  session[:stress] = false
   session[:badname] = false
+  session[:false_img] = false
+  session[:wrong_psw] = false
   session[:wrong_type] = false
   session[:wrong_creator_id] = false
   session[:no_unique_digname] = false
-
+  session[:no_unique_username] = false
+  
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
   id = params[:id]
 
+  #cooldown till #spammar uppdaterig
+  if session[:timeLogged] == nil #first time
+    session[:timeLogged] = 0
+  end
+  spam =  spamtime(session[:timeLogged])
+  session[:timeLogged] = Time.now.to_i #for next possible itteration
+
+  if spam #spammar uppdatering
+    session[:stress] = true
+    redirect("/cards/:id/edit")
+  end
+  
   #felaktigt namn
   if badname(diginame_new)
     session[:badname] = true
@@ -255,9 +314,32 @@ get("/cards/:id/rate") do
 end
 
 post("/cards/:id/rate") do
+  session[:empty] = false
+  session[:stress] = false
+  session[:badname] = false
+  session[:false_img] = false
+  session[:wrong_psw] = false
+  session[:wrong_type] = false
+  session[:wrong_creator_id] = false
+  session[:no_unique_username] = false
+  session[:no_unique_digname] = false
+  
   digi_id = params[:id].to_i
   rating = params[:rating].to_i
   user_id = session[:user_id]
+
+  #cooldown till #spammar raings
+  if session[:timeLogged] == nil #first time
+    session[:timeLogged] = 0
+  end
+  spam =  spamtime(session[:timeLogged])
+  session[:timeLogged] = Time.now.to_i #for next possible itteration
+
+  if spam #spammar ratins
+    session[:stress] = true
+    redirect('/cards/:id/rate')
+
+  end
 
   if check_rate(rating)
     session[:bad_rating]=false

@@ -15,5 +15,7 @@ form action="" method="POST" enctype="multipart/form-data"
     
     input type="submit" value="rate"
 
-- if session[:bad_rating]
+  - if session[:bad_rating]
     p de va inte korekt rating
+  -if session[:stress]
+    p de vart fett snabbt där

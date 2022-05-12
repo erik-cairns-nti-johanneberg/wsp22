@@ -24,6 +24,9 @@ form action="update" method="POST" enctype="multipart/form-data"
         p nu vart nåt skumt me dig va? 
         
     -if session[:no_unique_digname]
-        p kortets naman måste vara unikt va? 
+        p kortets naman måste vara unikt va?
+
+    -if session[:stress]
+        p de vart fett snabbt där
 
   
