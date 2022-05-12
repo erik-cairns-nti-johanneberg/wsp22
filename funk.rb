@@ -139,3 +139,9 @@ def avg_rate(digi_id)
     res = db.execute("SELECT AVG(rating) FROM digimon_and_rating WHERE digimon_id =?", digi_id)
     return res
 end
+
+def write_img(img_path, temp_path)
+    f = File.open("./public#{img_path}", 'wb')
+    f.write(temp_path.read)
+    f.close()
+end

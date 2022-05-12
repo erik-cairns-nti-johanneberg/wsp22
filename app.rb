@@ -105,7 +105,7 @@ post('/users/login') do #logga in användare
   end
 
   if bad_psw(password, user)
-    session[:wrong_psw] = false
+    session[:wrong_psw] = true
     redirect('/login')
   end
 
@@ -159,12 +159,11 @@ post('/cards') do #gör kort
 
  #########################################################flytta till mvc?
   temp_path = creature_img[:tempfile]
-
   img_path = "/uploads/#{creature_img[:filename]}"
+  
   # Write file to disk
-  File.open("./public#{img_path}", 'wb') do |f|
-    f.write(temp_path.read)
-  end
+  write_img(img_path, temp_path)
+  
 
   create(session[:user_id], params[:diginame], img_path, params[:type])
   redirect('/cards')
