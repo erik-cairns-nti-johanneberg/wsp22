@@ -8,7 +8,25 @@ require_relative 'funk'
 enable :sessions
 
 #secure routes
-  
+#????? den redirectar tillbacka till / om nåt e fel
+
+
+before do
+  p "Before KÖRS"
+  p request.path_info 
+  p session[:inloggad]
+  p " bool: #{(session[:inloggad] == nil || session[:inloggad] == false) && (request.path_info != '/login' &&request.path_info != '/error' && request.path_info != '/' && request.path_info != '/users/login' && request.path_info != '/register' && request.path_info != '/users/new')}"
+
+  #inloggag
+  if (session[:inloggad] == nil || session[:inloggad] == false) && (request.path_info != '/login' &&request.path_info != '/error' && request.path_info != '/' && request.path_info != '/users/login' && request.path_info != '/register' && request.path_info != '/users/new')
+    redirect('/error')
+  end
+
+  #admin
+  if (session[:authority] == nil || session[:authority] == false) && (request.path_info == '/delete_users')
+    redirect('/error')
+  end
+end
 
 get('/') do #visa startsida
   slim(:start)
@@ -306,6 +324,7 @@ post("/user/:id/delete") do #ta bort user
 end
 
 get('/error') do
+  p "errorsidan"
   redirect('/')
 end
 

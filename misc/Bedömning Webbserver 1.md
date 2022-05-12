@@ -3,19 +3,19 @@
 # Bedömningsshandledning Webbserverprogrammering 1
 sök ctrl+f på #(måste fixas)
 
-Cool down saknas
 Yardoc saknas.
 
 (gul i cheat sheet)
 before-block
 det är inloggad som äger de resurser som ska tas bort/ändras
 
-Delete Cascade-liknande funktionalitet
+Delete Cascade-liknande funktionalitet...........? fråga emil
 
-Utveckla MVC
+Utveckla MVC...... vad ska man fråga?
 
 Beskriv mappars innehåll 
-utvärdering (bra/dåligt)
+
+utvärdering (bra/dåligt) stoooooooooor
 
 ## Matris
 
