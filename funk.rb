@@ -58,7 +58,10 @@ def result(user_id)
     return db.execute("SELECT * FROM digimon WHERE creator_id = ?", user_id)
 end
 
-
+def all_from_user(bool)
+    db = db_conect(bool)
+    return db.execute("SELECT * FROM user")
+end
 
 def isEmpty(text)
     if text == nil

@@ -157,14 +157,13 @@ post('/cards') do #gör kort
     redirect('/cards/new')
   end
 
- #########################################################flytta till mvc?
   temp_path = creature_img[:tempfile]
   img_path = "/uploads/#{creature_img[:filename]}"
-  
+
   # Write file to disk
   write_img(img_path, temp_path)
   
-
+  #make card
   create(session[:user_id], params[:diginame], img_path, params[:type])
   redirect('/cards')
 end
@@ -215,10 +214,8 @@ post("/cards/:id/delete") do #ta bort kort
 end
 
 get ('/delete_users') do # följer jag inte rest här? ska de vara /uder/:id/delete?
-  db=db_conect(true)
-  result = db.execute("SELECT * FROM user")
+  result = all_from_user(true)
   slim(:"delete_user", locals:{use:result})
-
 end
 
 post("/user/:id/delete") do #ta bort kort
