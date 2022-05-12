@@ -218,15 +218,17 @@ get ('/delete_users') do # följer jag inte rest här? ska de vara /uder/:id/del
   slim(:"delete_user", locals:{use:result})
 end
 
-post("/user/:id/delete") do #ta bort kort
+post("/user/:id/delete") do #ta bort user
   #delet users 
   id=params[:id]
-  db=db_conect(false)
-  db.execute("DELETE FROM user WHERE id=?", id)
+  delete_user(id,false)
   #delete all post from deleted_users
-  db.execute("DELETE FROM digimon WHERE creator_id=?", id)
-  redirect('/cards')
+  delete_user_cards(id,false)
   #delete all ratings from deleted user
+  delete_user_rating(id,false)
+
+
+  redirect('/cards')
 
 end
 

@@ -47,6 +47,20 @@ def delete(id,bool)
     db = db_conect(bool)
     return db.execute("DELETE FROM digimon WHERE id=?", id)
 end
+def delete_user(id, bool)
+    db=db_conect(bool)
+    db.execute("DELETE FROM user WHERE id=?", id)
+end
+
+def delete_user_cards(id,bool)
+    db=db_conect(bool)
+    db.execute("DELETE FROM digimon WHERE creator_id=?", id)
+end
+
+def delete_user_rating(id,bool)
+    db=db_conect(bool)
+    db.execute("DELETE FROM digimon_and_rating WHERE user_id=?", id)
+end
 
 def create(creator_id, digname, img_path, creature_type)
     db = db_conect(false)
