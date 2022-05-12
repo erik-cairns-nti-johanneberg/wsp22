@@ -81,12 +81,27 @@ post('/users/new') do#registrerara användare.
 end
 
 post('/users/login') do #logga in användare
+
   session[:empty] = false
   session[:wrong_psw] = false
   session[:no_username] = false
+  session[:stress] = false
+
 
   username=params[:username]
   password=params[:password]
+
+  #cooldown till #spammar loggin
+  if session[:timeLogged] == nil #first time
+    session[:timeLogged] = 0
+  end
+  spam =  spamtime(session[:timeLogged])
+  session[:timeLogged] = Time.now.to_i #for next possible itteration
+
+  if spam #spammar loggin
+    session[:stress] = true
+    redirect('/login')
+  end
 
   if isEmpty(username) || isEmpty(password)#tomt användarnamn
     session[:empty] = true
@@ -227,7 +242,6 @@ post("/user/:id/delete") do #ta bort user
   #delete all ratings from deleted user
   delete_user_rating(id,false)
 
-
   redirect('/cards')
 
 end
@@ -244,9 +258,6 @@ post("/cards/:id/rate") do
   digi_id = params[:id].to_i
   rating = params[:rating].to_i
   user_id = session[:user_id]
-
-  p rating
-  p rating.class
 
   if check_rate(rating)
     session[:bad_rating]=false

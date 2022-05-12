@@ -11,3 +11,6 @@ form action="users/login" method="POST"
       
     -if session[:wrong_psw]
         p de vart fel lösens där
+        
+    -if session[:stress]
+        p de vart fett snabbt där

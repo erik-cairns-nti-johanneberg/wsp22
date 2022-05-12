@@ -162,3 +162,8 @@ def write_img(img_path, temp_path)
     f.write(temp_path.read)
     f.close()
 end
+
+def spamtime(lastTime)
+    timeDiff = Time.now.to_i - lastTime
+    return timeDiff < 1.5      
+end
