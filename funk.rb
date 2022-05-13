@@ -167,3 +167,13 @@ def spamtime(lastTime)
     timeDiff = Time.now.to_i - lastTime
     return timeDiff < 1.5      
 end
+
+def owner(id)
+    db=db_conect(true)
+    return db.execute("SELECT creator_id FROM digimon WHERE id=?", id).first
+end
+
+def no_card_has_id(id)
+    db=db_conect(true)
+    return db.execute("SELECT * FROM digimon WHERE id=?", id)
+end

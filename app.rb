@@ -7,16 +7,10 @@ require_relative 'funk'
 
 enable :sessions
 
-#secure routes
-#????? den redirectar tillbacka till / om nåt e fel
 
 
 before do
-  p "Before KÖRS"
-  p request.path_info 
-  p session[:inloggad]
-  p " bool: #{(session[:inloggad] == nil || session[:inloggad] == false) && (request.path_info != '/login' &&request.path_info != '/error' && request.path_info != '/' && request.path_info != '/users/login' && request.path_info != '/register' && request.path_info != '/users/new')}"
-
+  
   #inloggag
   if (session[:inloggad] == nil || session[:inloggad] == false) && (request.path_info != '/login' &&request.path_info != '/error' && request.path_info != '/' && request.path_info != '/users/login' && request.path_info != '/register' && request.path_info != '/users/new')
     redirect('/error')
@@ -268,31 +262,43 @@ post("/cards/:id/update") do #uppdatera korten
 
   if spam #spammar uppdatering
     session[:stress] = true
-    redirect("/cards/:id/edit")
+    redirect("/cards/#{id}/edit")
   end
   
   #felaktigt namn
   if badname(diginame_new)
     session[:badname] = true
-    redirect("/cards/:id/edit")
+    redirect("/cards/#{id}/edit")
   end
 
   #felaktig typ
   if wrong_type(type_new)
     session[:wrong_type] = true
-    redirect("/cards/:id/edit")
+    redirect("/cards/#{id}/edit")
   end
 
   #tomt namn
   if isEmpty(diginame_new)
     session[:empty] = true
-    redirect("/cards/:id/edit")
+    redirect("/cards/#{id}/edit")
   end
 
   #unikt namn
   if no_unique_name(diginame_new)
     session[:no_unique_digname] = true
-    redirect("/cards/:id/edit")
+    redirect("/cards/#{id}/edit")
+  end
+
+  #är id ett id på ett av alla kort?
+  if no_card_has_id(id).length==0
+    session[:no_card_id] = true
+    redirect("/egna")
+  end
+
+  # Äger inloggad resursen?
+  if owner(id)["creator_id"] != session[:user_id]
+    session[:wrong_user] = true
+    redirect("/cards/#{id}/edit")
   end
 
   update(id,false)

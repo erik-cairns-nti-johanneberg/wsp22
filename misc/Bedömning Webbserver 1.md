@@ -6,12 +6,9 @@ sök ctrl+f på #(måste fixas)
 Yardoc saknas.
 
 (gul i cheat sheet)
-before-block
 det är inloggad som äger de resurser som ska tas bort/ändras
 
 Delete Cascade-liknande funktionalitet...........? fråga emil
-
-Utveckla MVC...... vad ska man fråga?
 
 Beskriv mappars innehåll 
 
