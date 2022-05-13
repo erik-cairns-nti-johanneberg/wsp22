@@ -244,6 +244,8 @@ post("/cards/:id/update") do #uppdatera korten
   session[:badname] = false
   session[:false_img] = false
   session[:wrong_psw] = false
+  session[:wrong_user] = false
+  session[:no_card_id] = false
   session[:wrong_type] = false
   session[:wrong_creator_id] = false
   session[:no_unique_digname] = false
@@ -292,7 +294,7 @@ post("/cards/:id/update") do #uppdatera korten
   #är id ett id på ett av alla kort?
   if no_card_has_id(id).length==0
     session[:no_card_id] = true
-    redirect("/egna")
+    redirect("/cards/#{id}/edit")
   end
 
   # Äger inloggad resursen?

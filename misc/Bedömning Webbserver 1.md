@@ -5,8 +5,6 @@ sök ctrl+f på #(måste fixas)
 
 Yardoc saknas.
 
-(gul i cheat sheet)
-det är inloggad som äger de resurser som ska tas bort/ändras
 
 Delete Cascade-liknande funktionalitet...........? fråga emil
 
