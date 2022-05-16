@@ -3,11 +3,11 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 
-require_relative 'funk'
+require_relative 'model'
 
 enable :sessions
 
-
+include Model
 
 before do
   
