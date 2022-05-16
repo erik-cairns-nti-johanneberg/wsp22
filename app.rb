@@ -7,6 +7,7 @@ require_relative 'model'
 
 enable :sessions
 
+#model module
 include Model
 
 # Attempts to check if the client has authorization

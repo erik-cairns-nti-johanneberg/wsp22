@@ -134,7 +134,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa startsida.</p>
+<p>Display Landing Page.</p>
 </div></span>
   
 </li>
@@ -158,7 +158,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa alla.</p>
+<p>Displays all cards.</p>
 </div></span>
   
 </li>
@@ -182,7 +182,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa edit formuläret.</p>
+<p>Displays a edit post form.</p>
 </div></span>
   
 </li>
@@ -205,7 +205,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Displays a rate form.</p>
+</div></span>
   
 </li>
 
@@ -228,7 +230,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa formulär för att skapa kort.</p>
+<p>Displays a new post form.</p>
 </div></span>
   
 </li>
@@ -252,7 +254,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>följer jag inte rest här? ska de vara /uder/:id/delete?.</p>
+<p>Displays a delete user form      ### #(validera)!!!!!!!!.</p>
 </div></span>
   
 </li>
@@ -276,7 +278,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa bara användarens.</p>
+<p>Display users own cards.</p>
 </div></span>
   
 </li>
@@ -299,7 +301,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Error.</p>
+</div></span>
   
 </li>
 
@@ -322,7 +326,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>logga ut anvädare.</p>
+<p>Attempts to logout user.</p>
 </div></span>
   
 </li>
@@ -346,7 +350,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa loginsidan.</p>
+<p>Displays login form.</p>
 </div></span>
   
 </li>
@@ -370,7 +374,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>visa registreringssidan.</p>
+<p>Displays register form.</p>
 </div></span>
   
 </li>
@@ -394,7 +398,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>gör kort.</p>
+<p>Creates a new card.</p>
 </div></span>
   
 </li>
@@ -418,7 +422,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>ta bort kort.</p>
+<p>Delets a post.</p>
 </div></span>
   
 </li>
@@ -441,7 +445,9 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>
+<p>Rate cards.</p>
+</div></span>
   
 </li>
 
@@ -464,7 +470,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>uppdatera korten.</p>
+<p>Updates an existing post.</p>
 </div></span>
   
 </li>
@@ -488,7 +494,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>ta bort user.</p>
+<p>Delets a user.</p>
 </div></span>
   
 </li>
@@ -512,7 +518,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>logga in användare.</p>
+<p>Attempts to login user.</p>
 </div></span>
   
 </li>
@@ -536,7 +542,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>registrerara användare.</p>
+<p>Attempts to register new user.</p>
 </div></span>
   
 </li>
@@ -574,7 +580,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa startsida</p>
+<p>Display Landing Page</p>
 
 
   </div>
@@ -590,15 +596,15 @@
       <pre class="lines">
 
 
-25
-26
-27</pre>
+30
+31
+32</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 25</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 30</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa startsida
-</span>  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:start</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
+  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:start</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -617,13 +623,20 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa alla</p>
+<p>Displays all cards</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#all_dig-instance_method" title="Model#all_dig (method)">Model#all_dig</a></span></li>
+    
+  </ul>
 
 
 
@@ -633,13 +646,13 @@
       <pre class="lines">
 
 
-62
-63
-64
-65</pre>
+82
+83
+84
+85</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 62</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 82</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa alla  
 </span>  <span class='id identifier rubyid_result'><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">result</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_all_dig'><span class='object_link'><a href="Model.html#all_dig-instance_method" title="Model#all_dig (method)">all_dig</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
@@ -662,13 +675,20 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa edit formuläret</p>
+<p>Displays a edit post form</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">Model#types</a></span></li>
+    
+  </ul>
 
 
 
@@ -678,13 +698,13 @@
       <pre class="lines">
 
 
-67
-68
-69
-70</pre>
+90
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 90</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/edit</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa edit formuläret
 </span>  <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
@@ -704,18 +724,31 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Displays a rate form</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-339
-340
-341</pre>
+431
+432
+433</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 339</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 431</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/rate</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;digimon/rate&quot;</span><span class='rparen'>)</span>
@@ -737,13 +770,20 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa formulär för att skapa kort</p>
+<p>Displays a new post form</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">Model#types</a></span></li>
+    
+  </ul>
 
 
 
@@ -753,16 +793,16 @@
       <pre class="lines">
 
 
-52
-53
-54
-55</pre>
+66
+67
+68
+69</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 66</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/new</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa formulär för att skapa kort 
-</span>  <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/new</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span><span class='lparen'>(</span><span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;digimon/new&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span> <span class='lbrace'>{</span><span class='label'>types:</span> <span class='id identifier rubyid_types'><span class='object_link'><a href="Model.html#types-instance_method" title="Model#types (method)">types</a></span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
@@ -782,13 +822,20 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>följer jag inte rest här? ska de vara /uder/:id/delete?</p>
+<p>Displays a delete user form      ### #(validera)!!!!!!!!</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#all_from_user-instance_method" title="Model#all_from_user (method)">Model#all_from_user</a></span></li>
+    
+  </ul>
 
 
 
@@ -798,13 +845,13 @@
       <pre class="lines">
 
 
-316
-317
-318
-319</pre>
+399
+400
+401
+402</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 316</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 399</span>
 
 <span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/delete_users</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'># följer jag inte rest här? ska de vara /uder/:id/delete?
 </span>  <span class='id identifier rubyid_result'><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">result</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_all_from_user'><span class='object_link'><a href="Model.html#all_from_user-instance_method" title="Model#all_from_user (method)">all_from_user</a></span></span><span class='lparen'>(</span><span class='kw'>true</span><span class='rparen'>)</span>
@@ -827,13 +874,20 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa bara användarens</p>
+<p>Display users own cards</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">Model#result</a></span></li>
+    
+  </ul>
 
 
 
@@ -843,15 +897,15 @@
       <pre class="lines">
 
 
-57
-58
-59
-60</pre>
+74
+75
+76
+77</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 74</span>
 
-<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/egna</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa bara användarens 
+<span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/egna</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa bara användarens #följer jag rest?(user/:id/cards)
 </span>  <span class='id identifier rubyid_result'><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">result</a></span></span> <span class='op'>=</span> <span class='id identifier rubyid_result'><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">result</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:&quot;digimon/mine&quot;</span><span class='comma'>,</span> <span class='label'>locals:</span><span class='lbrace'>{</span><span class='label'>dig:</span><span class='id identifier rubyid_result'><span class='object_link'><a href="Model.html#result-instance_method" title="Model#result (method)">result</a></span></span><span class='rbrace'>}</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
@@ -869,19 +923,32 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Error</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-334
-335
-336
-337</pre>
+424
+425
+426
+427</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 334</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 424</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
   <span class='id identifier rubyid_p'>p</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>errorsidan</span><span class='tstring_end'>&quot;</span></span>
@@ -904,7 +971,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>logga ut anvädare</p>
+<p>Attempts to logout user</p>
 
 
   </div>
@@ -920,26 +987,26 @@
       <pre class="lines">
 
 
-37
-38
-39
-40
-41
-42
-43
-44
-45
-46
-47
 48
 49
-50</pre>
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 37</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 48</span>
 
-<span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/loggaut</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'># logga ut anvädare 
-</span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+<span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/loggaut</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>  
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:stress</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:badname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:inloggad</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -969,7 +1036,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa loginsidan</p>
+<p>Displays login form</p>
 
 
   </div>
@@ -985,15 +1052,15 @@
       <pre class="lines">
 
 
-33
-34
-35</pre>
+42
+43
+44</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 33</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 42</span>
 
-<span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa loginsidan
-</span>  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:login</span><span class='rparen'>)</span>
+<span class='id identifier rubyid_get'>get</span> <span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> 
+  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:login</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1012,7 +1079,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>visa registreringssidan</p>
+<p>Displays register form</p>
 
 
   </div>
@@ -1028,12 +1095,12 @@
       <pre class="lines">
 
 
-29
-30
-31</pre>
+36
+37
+38</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 29</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 36</span>
 
 <span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/register</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#visa registreringssidan
 </span>  <span class='id identifier rubyid_slim'>slim</span><span class='lparen'>(</span><span class='symbol'>:register</span><span class='rparen'>)</span>
@@ -1055,13 +1122,102 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>gör kort</p>
+<p>Creates a new card</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>:digname,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The card title</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:creator_id,</span>
+      
+      
+        <span class='type'>(<tt>Intiger</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The creators id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:creature_img,</span>
+      
+      
+        <span class='type'>(<tt>Sinatra::IndifferentHash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The creature img</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:creature_type,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The creature type</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">Model#spamtime</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#false_img-instance_method" title="Model#false_img (method)">Model#false_img</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#isEmpty-instance_method" title="Model#isEmpty (method)">Model#isEmpty</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#badname-instance_method" title="Model#badname (method)">Model#badname</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#no_unique_name-instance_method" title="Model#no_unique_name (method)">Model#no_unique_name</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#wrong_type-instance_method" title="Model#wrong_type (method)">Model#wrong_type</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#write_img-instance_method" title="Model#write_img (method)">Model#write_img</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#create-instance_method" title="Model#create (method)">Model#create</a></span></li>
+    
+  </ul>
 
 
 
@@ -1071,76 +1227,77 @@
       <pre class="lines">
 
 
-173
-174
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206
-207
-208
-209
-210
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221
-222
-223
-224
-225
-226
-227
-228
-229
-230
-231
-232
 233
 234
 235
 236
 237
 238
-239</pre>
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 173</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 233</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#gör kort 
 </span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1157,6 +1314,7 @@
   <span class='id identifier rubyid_creator_id'>creator_id</span><span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_creature_img'>creature_img</span><span class='op'>=</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:image</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_creature_type'>creature_type</span><span class='op'>=</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:type</span><span class='rbracket'>]</span>
+
 
   <span class='comment'>#cooldown till #spammar kort
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='comment'>#first time
@@ -1226,13 +1384,40 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>ta bort kort</p>
+<p>Delets a post</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>:id,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The card id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#delete-instance_method" title="Model#delete (method)">## #(validera)!!!!!!!!</a></span></li>
+    
+  </ul>
 
 
 
@@ -1242,16 +1427,16 @@
       <pre class="lines">
 
 
-310
-311
-312
-313
-314</pre>
+390
+391
+392
+393
+394</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 310</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 390</span>
 
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/delete</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#ta bort kort
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/delete</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#ta bort kort #behövs verkligen mer validering här?
 </span>  <span class='id identifier rubyid_id'>id</span><span class='op'>=</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_delete'><span class='object_link'><a href="Model.html#delete-instance_method" title="Model#delete (method)">delete</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1270,12 +1455,281 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Rate cards</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>:digi_id,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The card id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:rating,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The rating</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">Model#spamtime</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#check_rate-instance_method" title="Model#check_rate (method)">Model#check_rate</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#rate-instance_method" title="Model#rate (method)">Model#rate</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'app.rb', line 443</span>
+
+<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/rate</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:stress</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:badname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:false_img</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_psw</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_creator_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_username</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_digname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  
+  <span class='id identifier rubyid_digi_id'>digi_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_rating'>rating</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:rating</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
+  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
+
+  <span class='comment'>#cooldown till #spammar raings
+</span>  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='comment'>#first time
+</span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
+  <span class='kw'>end</span>
+  <span class='id identifier rubyid_spam'>spam</span> <span class='op'>=</span>  <span class='id identifier rubyid_spamtime'><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">spamtime</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='comment'>#for next possible itteration
+</span>
+  <span class='kw'>if</span> <span class='id identifier rubyid_spam'>spam</span> <span class='comment'>#spammar ratins
+</span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:stress</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
+    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/error</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_check_rate'><span class='object_link'><a href="Model.html#check_rate-instance_method" title="Model#check_rate (method)">check_rate</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_rating'>rating</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:bad_rating</span><span class='rbracket'>]</span><span class='op'>=</span><span class='kw'>false</span>
+    <span class='id identifier rubyid_rate'><span class='object_link'><a href="Model.html#rate-instance_method" title="Model#rate (method)">rate</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_digi_id'>digi_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rating'>rating</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
+    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>else</span>
+    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:bad_rating</span><span class='rbracket'>]</span><span class='op'>=</span><span class='kw'>true</span>
+    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_digi_id'>digi_id</span><span class='embexpr_end'>}</span><span class='tstring_content'>/rate</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+  <span class='kw'>end</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="POST__cards__id_update-instance_method">
+  
+    #<strong>POST /cards/:id/update</strong>  &#x21d2; <tt>Object</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Updates an existing post</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>:id,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The card id</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:diginame_new,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The new cardname</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:type_new,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The new type</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">Model#spamtime</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#badname-instance_method" title="Model#badname (method)">Model#badname</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#wrong_type-instance_method" title="Model#wrong_type (method)">Model#wrong_type</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#isEmpty-instance_method" title="Model#isEmpty (method)">Model#isEmpty</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#no_unique_name-instance_method" title="Model#no_unique_name (method)">Model#no_unique_name</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#no_card_has_id-instance_method" title="Model#no_card_has_id (method)">Model#no_card_has_id</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#owner-instance_method" title="Model#owner (method)">Model#owner</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#update-instance_method" title="Model#update (method)">Model#update</a></span></li>
+    
+  </ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
 343
 344
 345
@@ -1312,152 +1766,14 @@
 376
 377
 378
-379</pre>
+379
+380
+381
+382
+383</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 343</span>
-
-<span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/rate</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:stress</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:badname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:false_img</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_psw</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_creator_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_username</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_digname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
-  
-  <span class='id identifier rubyid_digi_id'>digi_id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='id identifier rubyid_rating'>rating</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:rating</span><span class='rbracket'>]</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span>
-  <span class='id identifier rubyid_user_id'>user_id</span> <span class='op'>=</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:user_id</span><span class='rbracket'>]</span>
-
-  <span class='comment'>#cooldown till #spammar raings
-</span>  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='comment'>#first time
-</span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
-  <span class='kw'>end</span>
-  <span class='id identifier rubyid_spam'>spam</span> <span class='op'>=</span>  <span class='id identifier rubyid_spamtime'><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">spamtime</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='comment'>#for next possible itteration
-</span>
-  <span class='kw'>if</span> <span class='id identifier rubyid_spam'>spam</span> <span class='comment'>#spammar ratins
-</span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:stress</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>true</span>
-    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards/:id/rate</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-
-  <span class='kw'>end</span>
-
-  <span class='kw'>if</span> <span class='id identifier rubyid_check_rate'><span class='object_link'><a href="Model.html#check_rate-instance_method" title="Model#check_rate (method)">check_rate</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_rating'>rating</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:bad_rating</span><span class='rbracket'>]</span><span class='op'>=</span><span class='kw'>false</span>
-    <span class='id identifier rubyid_rate'><span class='object_link'><a href="Model.html#rate-instance_method" title="Model#rate (method)">rate</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_digi_id'>digi_id</span><span class='comma'>,</span> <span class='id identifier rubyid_rating'>rating</span><span class='comma'>,</span> <span class='id identifier rubyid_user_id'>user_id</span><span class='rparen'>)</span>
-    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='kw'>else</span>
-    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:bad_rating</span><span class='rbracket'>]</span><span class='op'>=</span><span class='kw'>true</span>
-    <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards/:id/rate</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-  <span class='kw'>end</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="POST__cards__id_update-instance_method">
-  
-    #<strong>POST /cards/:id/update</strong>  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>uppdatera korten</p>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-241
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301
-302
-303
-304
-305
-306
-307
-308</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 241</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 316</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/cards/:id/update</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#uppdatera korten
 </span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1472,9 +1788,9 @@
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_digname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_username</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   
+  <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_diginame_new'>diginame_new</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:diginame_new</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_type_new'>type_new</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:type_new</span><span class='rbracket'>]</span>
-  <span class='id identifier rubyid_id'>id</span> <span class='op'>=</span> <span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
 
   <span class='comment'>#cooldown till #spammar uppdaterig
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='comment'>#first time
@@ -1544,13 +1860,44 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>ta bort user</p>
+<p>Delets a user</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>:id,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The users id</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#delete_user-instance_method" title="Model#delete_user (method)">Model#delete_user</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#delete_user_cards-instance_method" title="Model#delete_user_cards (method)">Model#delete_user_cards</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#delete_user_rating-instance_method" title="Model#delete_user_rating (method)">Model#delete_user_rating</a></span></li>
+    
+  </ul>
 
 
 
@@ -1560,33 +1907,31 @@
       <pre class="lines">
 
 
-321
-322
-323
-324
-325
-326
-327
-328
-329
-330
-331
-332</pre>
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 321</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 411</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/user/:id/delete</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#ta bort user
 </span>  <span class='comment'>#delet users 
 </span>  <span class='id identifier rubyid_id'>id</span><span class='op'>=</span><span class='id identifier rubyid_params'>params</span><span class='lbracket'>[</span><span class='symbol'>:id</span><span class='rbracket'>]</span>
   <span class='id identifier rubyid_delete_user'><span class='object_link'><a href="Model.html#delete_user-instance_method" title="Model#delete_user (method)">delete_user</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
-  <span class='comment'>#delete all post from deleted_users
+  <span class='comment'>#delete all cards from deleted_users
 </span>  <span class='id identifier rubyid_delete_user_cards'><span class='object_link'><a href="Model.html#delete_user_cards-instance_method" title="Model#delete_user_cards (method)">delete_user_cards</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
   <span class='comment'>#delete all ratings from deleted user
 </span>  <span class='id identifier rubyid_delete_user_rating'><span class='object_link'><a href="Model.html#delete_user_rating-instance_method" title="Model#delete_user_rating (method)">delete_user_rating</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_id'>id</span><span class='comma'>,</span><span class='kw'>false</span><span class='rparen'>)</span>
 
   <span class='id identifier rubyid_redirect'>redirect</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/cards</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
-
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -1605,13 +1950,64 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>logga in användare</p>
+<p>Attempts to login user</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>:password,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The users password</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:username,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The users username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">Model#spamtime</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#isEmpty-instance_method" title="Model#isEmpty (method)">Model#isEmpty</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#bad_psw-instance_method" title="Model#bad_psw (method)">Model#bad_psw</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#no_unique_user-instance_method" title="Model#no_unique_user (method)">Model#no_unique_user</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#allfromUsername-instance_method" title="Model#allfromUsername (method)">Model#allfromUsername</a></span></li>
+    
+  </ul>
 
 
 
@@ -1621,49 +2017,6 @@
       <pre class="lines">
 
 
-119
-120
-121
-122
-123
-124
-125
-126
-127
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145
-146
-147
-148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
 162
 163
 164
@@ -1673,10 +2026,55 @@
 168
 169
 170
-171</pre>
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 162</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/users/login</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span> <span class='comment'>#logga in användare
 </span>
@@ -1686,6 +2084,7 @@
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:false_img</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_psw</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_type</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
+  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_username</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:wrong_creator_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_digname</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:no_unique_username</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1697,6 +2096,7 @@
 </span>  <span class='kw'>if</span> <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>==</span> <span class='kw'>nil</span> <span class='comment'>#first time
 </span>    <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='int'>0</span>
   <span class='kw'>end</span>
+
   <span class='id identifier rubyid_spam'>spam</span> <span class='op'>=</span>  <span class='id identifier rubyid_spamtime'><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">spamtime</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:timeLogged</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='const'>Time</span><span class='period'>.</span><span class='id identifier rubyid_now'>now</span><span class='period'>.</span><span class='id identifier rubyid_to_i'>to_i</span> <span class='comment'>#for next possible itteration
 </span>
@@ -1748,13 +2148,80 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>registrerara användare.</p>
+<p>Attempts to register new user</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>:password,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The new users password</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:password_confirm,</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The password confirm</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>:username,</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The new users username</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="Model.html#spamtime-instance_method" title="Model#spamtime (method)">Model#spamtime</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#isEmpty-instance_method" title="Model#isEmpty (method)">Model#isEmpty</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#wrong_psw-instance_method" title="Model#wrong_psw (method)">Model#wrong_psw</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#no_unique_user-instance_method" title="Model#no_unique_user (method)">Model#no_unique_user</a></span></li>
+    
+      <li><span class='object_link'><a href="Model.html#make_user-instance_method" title="Model#make_user (method)">Model#make_user</a></span></li>
+    
+  </ul>
 
 
 
@@ -1764,39 +2231,6 @@
       <pre class="lines">
 
 
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91
-92
-93
-94
-95
-96
-97
-98
-99
-100
-101
-102
-103
-104
 105
 106
 107
@@ -1809,10 +2243,43 @@
 114
 115
 116
-117</pre>
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'app.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'app.rb', line 105</span>
 
 <span class='id identifier rubyid_post'>post</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>/users/new</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span> <span class='kw'>do</span><span class='comment'>#registrerara användare.
 </span>  <span class='id identifier rubyid_session'>session</span><span class='lbracket'>[</span><span class='symbol'>:empty</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='kw'>false</span>
@@ -1870,7 +2337,7 @@
 </div>
 
       <div id="footer">
-  Generated on Mon May 16 10:20:47 2022 by
+  Generated on Mon May 16 20:31:16 2022 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.27 (ruby-3.0.2).
 </div>
