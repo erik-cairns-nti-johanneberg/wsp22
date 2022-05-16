@@ -3,14 +3,20 @@
 # Bedömningsshandledning Webbserverprogrammering 1
 sök ctrl+f på #(måste fixas)
 
+frågor?
+
+är det on_delete_cascadefunktionallitet?
+
+behöver cooldown redirecta till error/få dem att inte kunna försöa igen på ett tag 
+eller räcker det att jag säger att de ska chilla?
+
+
+
 Yardoc saknas.
 
+Beskriv mappars innehåll. Även viktiga filer, vad används de till? 
 
-Delete Cascade-liknande funktionalitet...........? fråga emil
-
-Beskriv mappars innehåll 
-
-utvärdering (bra/dåligt) stoooooooooor
+Utvärdering saknas. Beskriv vad som gick bra/mindre bra samt vad du hade gjort annorlunda om du hade gjort om eller utvecklat projektet.  
 
 ## Matris
 
