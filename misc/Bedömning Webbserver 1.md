@@ -10,7 +10,7 @@ frågor?
 behöver cooldown redirecta till error/få dem att inte kunna försöa igen på ett tag 
 eller räcker det att jag säger att de ska chilla?
 
-
+behöver jag fixa error mer än de e nu (errorsidan)
 
 Yardoc saknas.
 

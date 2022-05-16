@@ -9,6 +9,8 @@ enable :sessions
 
 include Model
 
+# Attempts to check if the client has authorization
+#
 before do
   
   #inloggag
@@ -22,19 +24,27 @@ before do
   end
 end
 
-get('/') do #visa startsida
+# Display Landing Page
+#
+get('/') do 
   slim(:start)
 end
 
+# Displays register form
+#
 get('/register') do #visa registreringssidan
   slim(:register)
 end
 
-get ('/login') do #visa loginsidan
+# Displays login form
+#
+get ('/login') do 
   slim(:login)
 end
 
-get ('/loggaut') do # logga ut anvädare 
+# Attempts to logout user
+#
+get ('/loggaut') do  
   session[:empty] = false
   session[:stress] = false
   session[:badname] = false
@@ -49,26 +59,48 @@ get ('/loggaut') do # logga ut anvädare
   redirect('/')
 end
 
-get("/cards/new") do #visa formulär för att skapa kort 
+# Displays a new post form
+#
+# @see Model#types
+get("/cards/new") do
   types = types(false)
   slim(:"digimon/new", locals: {types: types})
 end
 
-get('/egna') do #visa bara användarens 
+# Display users own cards
+#
+# @see Model#result
+get('/egna') do #visa bara användarens #följer jag rest?(user/:id/cards)
   result = result(session[:user_id])
   slim(:"digimon/mine", locals:{dig:result})
 end
 
+# Displays all cards
+#
+# @see Model#all_dig
 get('/cards') do #visa alla  
   result = all_dig(true)
   slim(:"digimon/index", locals:{dig:result})
 end
 
+# Displays a edit post form
+#
+#@see Model#types
 get("/cards/:id/edit") do #visa edit formuläret
   types = types(false)
   slim(:"digimon/edit", locals: {types: types,})
 end
 
+# Attempts to register new user
+#
+# @param [String] :password, The new users password
+# @param [String] :password_confirm, The password confirm
+# @param [Integer] :username, The new users username
+# @see Model#spamtime
+# @see Model#isEmpty
+# @see Model#wrong_psw
+# @see Model#no_unique_user
+# @see Model#make_user
 post('/users/new') do#registrerara användare.
   session[:empty] = false
   session[:stress] = false
@@ -116,6 +148,16 @@ post('/users/new') do#registrerara användare.
   redirect('/login')
 end
 
+# Attempts to login user
+#
+# @param [String] :password, The users password
+# @param [Integer] :username, The users username
+#
+# @see Model#spamtime
+# @see Model#isEmpty
+# @see Model#bad_psw
+# @see Model#no_unique_user
+# @see Model#allfromUsername
 post('/users/login') do #logga in användare
 
   session[:empty] = false
@@ -124,6 +166,7 @@ post('/users/login') do #logga in användare
   session[:false_img] = false
   session[:wrong_psw] = false
   session[:wrong_type] = false
+  session[:no_username] = false
   session[:wrong_creator_id] = false
   session[:no_unique_digname] = false
   session[:no_unique_username] = false
@@ -135,6 +178,7 @@ post('/users/login') do #logga in användare
   if session[:timeLogged] == nil #first time
     session[:timeLogged] = 0
   end
+
   spam =  spamtime(session[:timeLogged])
   session[:timeLogged] = Time.now.to_i #for next possible itteration
 
@@ -170,6 +214,21 @@ post('/users/login') do #logga in användare
   redirect('/')
 end
 
+# Creates a new card
+#
+# @param [String] :digname, The card title
+# @param [Intiger] :creator_id, The creators id
+# @param [Sinatra::IndifferentHash] :creature_img, The creature img
+# @param [String] :creature_type, The creature type
+#
+# @see Model#spamtime
+# @see Model#false_img
+# @see Model#isEmpty
+# @see Model#badname
+# @see Model#no_unique_name
+# @see Model#wrong_type
+# @see Model#write_img
+# @see Model#create
 post('/cards') do #gör kort 
   session[:empty] = false
   session[:stress] = false
@@ -185,6 +244,7 @@ post('/cards') do #gör kort
   creator_id= session[:user_id]
   creature_img=params[:image]
   creature_type=params[:type]
+
 
   #cooldown till #spammar kort
   if session[:timeLogged] == nil #first time
@@ -238,6 +298,20 @@ post('/cards') do #gör kort
   redirect('/cards')
 end
 
+# Updates an existing post
+#
+# @param [Integer] :id, The card id
+# @param [String] :diginame_new, The new cardname
+# @param [String] :type_new, The new type
+#
+# @see Model#spamtime
+# @see Model#badname
+# @see Model#wrong_type
+# @see Model#isEmpty
+# @see Model#no_unique_name
+# @see Model#no_card_has_id
+# @see Model#owner
+# @see Model#update
 post("/cards/:id/update") do #uppdatera korten
   session[:empty] = false
   session[:stress] = false
@@ -251,9 +325,9 @@ post("/cards/:id/update") do #uppdatera korten
   session[:no_unique_digname] = false
   session[:no_unique_username] = false
   
+  id = params[:id]
   diginame_new = params[:diginame_new]
   type_new = params[:type_new]
-  id = params[:id]
 
   #cooldown till #spammar uppdaterig
   if session[:timeLogged] == nil #first time
@@ -307,39 +381,64 @@ post("/cards/:id/update") do #uppdatera korten
   redirect('/cards')
 end
 
-post("/cards/:id/delete") do #ta bort kort
+# Delets a post
+#
+# @param [Integer] :id, The card id
+#
+# @see Model#delete               ## #(validera)!!!!!!!!
+post("/cards/:id/delete") do #ta bort kort #behövs verkligen mer validering här?
   id=params[:id]
   delete(id,false)
   redirect('/cards')
 end
 
+#Displays a delete user form      ### #(validera)!!!!!!!!
+#
+# @see Model#all_from_user
 get ('/delete_users') do # följer jag inte rest här? ska de vara /uder/:id/delete?
   result = all_from_user(true)
   slim(:"delete_user", locals:{use:result})
 end
 
+# Delets a user
+#
+# @param [Integer] :id, The users id
+#
+# @see Model#delete_user
+# @see Model#delete_user_cards
+# @see Model#delete_user_rating
 post("/user/:id/delete") do #ta bort user
   #delet users 
   id=params[:id]
   delete_user(id,false)
-  #delete all post from deleted_users
+  #delete all cards from deleted_users
   delete_user_cards(id,false)
   #delete all ratings from deleted user
   delete_user_rating(id,false)
 
   redirect('/cards')
-
 end
 
+# Error
 get('/error') do
   p "errorsidan"
   redirect('/')
 end
 
+# Displays a rate form
+#
 get("/cards/:id/rate") do
   slim(:"digimon/rate")
 end
 
+# Rate cards
+#
+# @param [Integer] :digi_id, The card id
+# @param [Integer] :rating, The rating
+#
+# @see Model#spamtime
+# @see Model#check_rate
+# @see Model#rate
 post("/cards/:id/rate") do
   session[:empty] = false
   session[:stress] = false
@@ -364,8 +463,7 @@ post("/cards/:id/rate") do
 
   if spam #spammar ratins
     session[:stress] = true
-    redirect('/cards/:id/rate')
-
+    redirect("/error")
   end
 
   if check_rate(rating)
@@ -374,6 +472,6 @@ post("/cards/:id/rate") do
     redirect('/cards')
   else
     session[:bad_rating]=true
-    redirect('/cards/:id/rate')
+    redirect("/cards/#{digi_id}/rate")
   end
 end
